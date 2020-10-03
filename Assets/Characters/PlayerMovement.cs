@@ -39,10 +39,10 @@ public class PlayerMovement : MonoBehaviour
 
         mousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
         
-    }
+    //}
 
-    private void FixedUpdate()
-    {
+    //private void FixedUpdate()
+    //{
         rigidBody.MovePosition(rigidBody.position + movement * moveSpeed * Time.fixedDeltaTime);
 
         Vector2 lookDirection = mousePosition - rigidBody.position;
