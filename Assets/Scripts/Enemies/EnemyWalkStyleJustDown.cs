@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyWalkStyle2 : EnemyWalkController
+public class EnemyWalkStyleJustDown : EnemyWalkController
 {
     const float c_speedMultiplier = 1.0f;
     const float c_xVelocity = 0.0f;

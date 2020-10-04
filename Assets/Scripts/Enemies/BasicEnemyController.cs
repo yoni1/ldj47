@@ -34,7 +34,7 @@ public class BasicEnemyController : MonoBehaviour
     [SerializeField]
     private float bulletFrequency;
 
-    public EnemyWalkController.WalkingStyle walkingStyle = EnemyWalkController.WalkingStyle.RandomWalkingStyle;
+    public EnemyWalkController.WalkingStyle walkingStyle;
     private EnemyWalkController walkController;
 
     public EnemyBulletController.BulletStyle bulletStyle;

@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
 
         // TODO: Choose walking style
         BasicEnemyController newEnemyController = newEnemy.GetComponent<BasicEnemyController>();
-        newEnemyController.walkingStyle = EnemyWalkController.WalkingStyle.Style2;
+        newEnemyController.walkingStyle = EnemyWalkController.WalkingStyle.ZigZagWideStartRight;
         newEnemyController.bulletStyle = bulletStyle;
         newEnemyController.bullet = bulletFab;
     }
