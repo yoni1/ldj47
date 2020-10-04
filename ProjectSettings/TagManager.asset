@@ -15,11 +15,11 @@ TagManager:
   - 
   - 
   - Damageable
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - PlayerBullet
+  - EnemyBullet
+  - Player
+  - Wall
   - 
   - 
   - 
