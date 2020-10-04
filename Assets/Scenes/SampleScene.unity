@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 101794944}
   - component: {fileID: 101794943}
   - component: {fileID: 101794942}
+  - component: {fileID: 101794945}
   m_Layer: 0
   m_Name: Hanchman
   m_TagString: Untagged
@@ -344,6 +345,29 @@ MonoBehaviour:
   N: {fileID: 21300000, guid: bfeec8b52bf084de4a0f38a32cdde45a, type: 3}
   S: {fileID: 21300000, guid: e17fdbf24490c4be8957973fffa6ad08, type: 3}
   currentFirePoint: {fileID: 0}
+--- !u!114 &101794945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101794939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d1f41718e5194e988af49ee7190a907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.03
+  radius: 0
+  dragging_speed: 0.01
+  fishtank: {fileID: 12598298}
+  dragProximity: 0.03
+  bool_debug: 0
+  float_debug1: 0
+  float_debug2: 0
+  vector2_debug1: {x: 0, y: 0}
+  vector2_debug2: {x: 0, y: 0}
+  vector2_debug3: {x: 0, y: 0}
 --- !u!1 &106114856
 GameObject:
   m_ObjectHideFlags: 0
