@@ -6,7 +6,7 @@ public class MovingInCicle : MonoBehaviour
 {
     
     [SerializeField]
-    public float speed = 0.1f;
+    public float speed = 0.03f;
     // the radius of the player compared to the fishtank
     [SerializeField]
     public float radius;
@@ -18,7 +18,7 @@ public class MovingInCicle : MonoBehaviour
     [SerializeField]
     private GameObject fishtank;
     [SerializeField]
-    private float dragProximity = 0.001f;
+    private float dragProximity = 0.03f;
 
     //meant for isometric calc
     private float squishFactor = 2f;
@@ -92,6 +92,8 @@ public class MovingInCicle : MonoBehaviour
 
         if ((endPos - (Vector2)henchmanPos).magnitude < dragProximity)
             return true;
+
+        float_debug1 = (endPos - (Vector2)henchmanPos).magnitude;
 
         float clockwise = -1f;
         if (GoClockwise((Vector2)henchmanPos, endPos))
