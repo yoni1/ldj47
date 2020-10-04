@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8753042192767992886}
   - component: {fileID: 6803271234531277091}
   - component: {fileID: 6912390756797396489}
+  - component: {fileID: 1277453171}
   m_Layer: 0
   m_Name: DefaultFish
   m_TagString: Untagged
@@ -26,9 +27,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3033159324101631210}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.197, y: -1.571, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -124,3 +125,54 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!60 &1277453171
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3033159324101631210}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.48, y: 0.48}
+    newSize: {x: 0.48, y: 0.48}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.11568117, y: -0.08185625}
+      - {x: 0.13203382, y: -0.061045647}
+      - {x: 0.17900896, y: -0.03879875}
+      - {x: 0.18039425, y: 0.007405868}
+      - {x: 0.1542697, y: 0.026519477}
+      - {x: 0.12071705, y: 0.0317868}
+      - {x: 0.104557514, y: 0.076871574}
+      - {x: 0.092666075, y: 0.09987251}
+      - {x: 0.06259394, y: 0.08891779}
+      - {x: 0.012324445, y: 0.070595406}
+      - {x: -0.047742877, y: 0.035829224}
+      - {x: -0.039453983, y: 0.021203637}
+      - {x: -0.069358826, y: 0.0054631233}
+      - {x: -0.069508225, y: 0.02850984}
+      - {x: -0.0922242, y: 0.056871846}
+      - {x: -0.14050636, y: 0.10078715}
+      - {x: -0.1209787, y: 0.037658624}
+      - {x: -0.12313993, y: -0.022593485}
+      - {x: -0.16379976, y: -0.075904965}
+      - {x: -0.10403353, y: -0.07230932}
+      - {x: -0.063313484, y: -0.041516244}
+      - {x: -0.021845818, y: -0.086411305}
+      - {x: 0.0052309036, y: -0.09732956}
+      - {x: 0.034539223, y: -0.12142825}
+      - {x: 0.059385836, y: -0.1214419}
+      - {x: 0.08166268, y: -0.08251758}
