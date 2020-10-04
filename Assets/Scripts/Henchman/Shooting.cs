@@ -60,5 +60,6 @@ public class Shooting : MonoBehaviour
 
         Rigidbody2D rigidBody = fish.GetComponent<Rigidbody2D>();
         rigidBody.AddForce(currentFirePoint.right * fishForce, ForceMode2D.Impulse);
+        Destroy(fish, 5.0f);
     }
 }
