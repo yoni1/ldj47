@@ -28,8 +28,14 @@ public class BasicEnemyController : MonoBehaviour
     [SerializeField]
     private float enemyBaseSpeed;
 
+    [SerializeField]
+    private float bulletSpeed;
+
     public EnemyWalkController.WalkingStyle walkingStyle = EnemyWalkController.WalkingStyle.RandomWalkingStyle;
     private EnemyWalkController walkController;
+
+    public EnemyBulletController.BulletStyle bulletStyle;
+    private EnemyBulletController bulletController;
 
     private void Start()
     {
@@ -40,6 +46,8 @@ public class BasicEnemyController : MonoBehaviour
 
         walkController = EnemyWalkController.Create(walkingStyle, enemyBaseSpeed, playerRb, enemyRb);
         walkController.BeginWalk();
+
+        bulletController = EnemyBulletController.Create(bulletStyle, bulletSpeed, playerRb, enemyRb);
     }
 
     private void Update()
@@ -50,6 +58,8 @@ public class BasicEnemyController : MonoBehaviour
                 walkController.UpdateWalkingState();
                 break;
         }
+
+        
     }
 
     private void SetState(State newState)
