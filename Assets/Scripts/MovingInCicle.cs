@@ -17,9 +17,11 @@ public class MovingInCicle : MonoBehaviour
 
     [SerializeField]
     private GameObject fishtank;
+    [SerializeField]
+    private float dragProximity = 0.001f;
 
     //meant for isometric calc
-    private float squish_factor = 2f;
+    private float squishFactor = 2f;
 
     // remove me at the end
     [SerializeField]
@@ -30,11 +32,18 @@ public class MovingInCicle : MonoBehaviour
     private float float_debug2 = 0f;
     [SerializeField]
     private Vector2 vector2_debug1;
+    [SerializeField]
+    private Vector2 vector2_debug2;
+    [SerializeField]
+    private Vector2 vector2_debug3;
+
 
     // Start is called before the first frame update
     void Start()
     {
         henchman = GetComponent<Rigidbody2D>();
+        // NOTE: hencman must start with same y as fishtank, to make it easier for the isometric transforms.
+
         Vector3 radiusVector = (fishtank.transform.position - henchman.transform.position);
         radius = radiusVector.magnitude;
         angle = Mathf.Atan(radiusVector.y / radiusVector.x);
@@ -42,8 +51,9 @@ public class MovingInCicle : MonoBehaviour
 
     private Vector2 get_to_position()
     {
-        Vector2 movement = new Vector2(Input.GetAxis("Horizontal") * speed,
-                                Input.GetAxis("Vertical") * speed);
+        Vector2 movement = new Vector2(
+            Input.GetAxis("Horizontal"),
+            Input.GetAxis("Vertical"));
 
         if (movement.magnitude < 0.001)
         {
@@ -54,46 +64,55 @@ public class MovingInCicle : MonoBehaviour
 
         // convert keys to place on circle
         movement /= movement.magnitude;
+        movement *= radius;
         movement += fishtankPos;
-        movement *= Mathf.Sqrt(radius);
 
-        // curret for isometric 
-        movement.y = fishtankPos.y + ((movement.y - fishtankPos.y) / squish_factor);
+        // correct for isometric 
+        movement.y = fishtankPos.y + ((movement.y - fishtankPos.y) / squishFactor);
         return movement;
     }
 
-    private bool GoClockwise(Vector2 current_pos, Vector2 end_pos)
+    private bool GoClockwise(Vector2 currentPos, Vector2 endPos)
     {
-        Vector2 current_fix = current_pos - (Vector2)fishtank.transform.position;
-        Vector2 end_fix = end_pos - (Vector2)fishtank.transform.position;
-        current_fix.y *= squish_factor;
-        end_fix.y *= squish_factor;
-        float diff = Mathf.Atan2(end_fix.y, end_fix.x) - 
-            Mathf.Atan2(current_fix.y, current_fix.x);
+        Vector2 currentFix = currentPos - (Vector2)fishtank.transform.position;
+        Vector2 endFix = endPos - (Vector2)fishtank.transform.position;
+        currentFix.y *= squishFactor;
+        endFix.y *= squishFactor;
+        float diff = Mathf.Atan2(endFix.y, endFix.x) - 
+            Mathf.Atan2(currentFix.y, currentFix.x);
+
         if (diff < 0) { diff += 2 * Mathf.PI; }
-        bool_debug = diff < (Mathf.PI);
-        return bool_debug;
+        return diff < (Mathf.PI);
     }
 
-    private void MovePlayer(Vector2 endPos)
+    private bool MovePlayer(Vector2 endPos)
     {
         Vector3 henchmanPos = henchman.transform.position;
-        Vector2 fishtankPos = (Vector2)fishtank.transform.position;
+        Vector3 fishtankPos = fishtank.transform.position;
+
+        if ((endPos - (Vector2)henchmanPos).magnitude < dragProximity)
+            return true;
+
         float clockwise = -1f;
         if (GoClockwise((Vector2)henchmanPos, endPos))
         {
             clockwise = 1;
         }
         float angularSpeed = clockwise * speed;
-        angle += angularSpeed;// * Time.deltaTime;
+        angle += angularSpeed;//* Time.deltaTime;;
         if (angle > 2 * Mathf.PI)
             angle -= 2 * Mathf.PI;
 
-        var offset = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
-        henchman.transform.position = new Vector3(
+
+        Vector3 offset = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
+        
+        Vector3 newPos = new Vector3(
             fishtankPos.x + offset.x,
-            fishtankPos.y + (offset.y / squish_factor),
-            henchmanPos.z);
+            fishtankPos.y + (offset.y / squishFactor),
+            fishtankPos.z);
+
+        henchman.transform.position = newPos;
+        return false;
     }
 
     void DragFishtank()
@@ -107,42 +126,12 @@ public class MovingInCicle : MonoBehaviour
         Vector2 endPos = get_to_position();
         if (endPos != default)
         {
-            Vector2 henchman2DPos = henchman.transform.position;
-            if ((endPos - henchman2DPos).magnitude < 0.05)
+            bool dragNow = MovePlayer(endPos);
+            if (dragNow)
             {
                 Debug.Log("Start dragging here");
                 DragFishtank();
             }
-
-            MovePlayer(endPos);
         }
-
-
-        //Vector2 movement = new Vector2(Input.GetAxis("Horizontal") * speed,
-        //                        Input.GetAxis("Vertical") * speed);
-
-        
-
-        //float angularSpeed = -Input.GetAxis("Horizontal") * speed;
-
-        //if (Mathf.Abs(angularSpeed) > 0.001)
-        //{
-        //    //Debug.Log("movement normed" + (movement / movement.magnitude));
-
-        //    //Debug.Log("movement = " + movement.magnitude);
-
-
-        //    angle += angularSpeed;// * Time.deltaTime;
-        //    if (angle > 2 * Mathf.PI)
-        //        angle -= 2 * Mathf.PI;
-
-
-        //    var offset = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
-        //    henchman.transform.position = new Vector3(
-        //        fishtank.transform.position.x + offset.x,
-        //        fishtank.transform.position.y + (offset.y / squish_factor),
-        //        henchman.transform.position.z);
-        //}
-
     }
 }
