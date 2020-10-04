@@ -12,4 +12,9 @@ public class FishProperties : MonoBehaviour
     public Sprite S;
     public Sprite SW;
     public Sprite W;
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
 }
