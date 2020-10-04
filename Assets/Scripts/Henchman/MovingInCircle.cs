@@ -54,6 +54,7 @@ public class MovingInCircle : MonoBehaviour
     public Sprite W;
 
     public float pinkSpotFactor = 2.11f;
+    public float pipeTextureFactor = 2f;
 
     private LineRenderer lineRenderer;
 
@@ -167,6 +168,7 @@ public class MovingInCircle : MonoBehaviour
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 180f;
 
         SpriteDirectionResolver.Direction direction = SpriteDirectionResolver.ResolveDirection(-angle);
+        Debug.Log($"The direction is: {direction}");
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
 
 
@@ -248,13 +250,11 @@ public class MovingInCircle : MonoBehaviour
         if (((angle < 2 * pi) && (angle > pi)) || ((angle > -pi) && (angle < 0)))
         {
             henchman.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
-            lineRenderer.sortingOrder = 1;
             fishtank.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
         }
         else
         {
             henchman.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
-            lineRenderer.sortingOrder = 0;
             fishtank.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
         }
 
@@ -276,8 +276,18 @@ public class MovingInCircle : MonoBehaviour
         //float angle = Mathf.Atan2(lineVector.y, lineVector.x) * Mathf.Rad2Deg - 180f;
         //pinkLine.transform.rotation = Quaternion.Euler(0, 0, angle);
         pinkspot.transform.position = (henchman.transform.position - fishtank.transform.position) / pinkSpotFactor + fishtank.transform.position;
-        lineRenderer.SetPosition(0, pinkspot.transform.position);
-        lineRenderer.SetPosition(1, currentTetherPoint.position);
+
+        float z = 0f;
+        if (((angle < 2 * Mathf.PI) && (angle > Mathf.PI)) || ((angle > -Mathf.PI) && (angle < 0)))
+        {
+            z = 1f;
+        }
+
+        lineRenderer.SetPosition(0, new Vector3(pinkspot.transform.position.x, pinkspot.transform.position.y, z));
+        lineRenderer.SetPosition(1, new Vector3(currentTetherPoint.position.x, currentTetherPoint.position.y, z));
+
+        float lineLength = (currentTetherPoint.position - pinkspot.transform.position).magnitude;
+        lineRenderer.material.mainTextureScale = new Vector2(lineLength / pipeTextureFactor, 1);
     }
 
     void DragFishtank()

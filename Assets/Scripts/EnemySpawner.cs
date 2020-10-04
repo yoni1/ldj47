@@ -17,6 +17,10 @@ public class EnemySpawner : MonoBehaviour
     {
         GameObject newEnemy = Instantiate(enemyObjectPrefab);
         newEnemy.transform.position = transform.position;
+
+        // TODO: Choose walking style
+        BasicEnemyController newEnemyController = newEnemy.GetComponent<BasicEnemyController>();
+        newEnemyController.walkingStyle = EnemyWalkController.WalkingStyle.Style2;
     }
 
     void Update()

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class BasicEnemyController : MonoBehaviour
@@ -14,22 +11,10 @@ public class BasicEnemyController : MonoBehaviour
         Dead
     }
 
-
-    private EnemyProperties ShootingType;
-
     private State currentState;
 
-    [SerializeField]
-    private float movementSpeed;
-
-    private int direction;
-
-    private Vector2 movement;
-    private GameObject jamesBond, player;
-    private Rigidbody2D jamesBondRb, playerRb;
-
-    private GameObject enemyBullet;
-    private bool wallDetected;
+    private GameObject enemy, player;
+    private Rigidbody2D enemyRb, playerRb;
 
     [SerializeField]
     private Transform wallCheck;
@@ -40,12 +25,21 @@ public class BasicEnemyController : MonoBehaviour
     [SerializeField]
     private LayerMask whatIsWall;
 
+    [SerializeField]
+    private float enemyBaseSpeed;
+
+    public EnemyWalkController.WalkingStyle walkingStyle = EnemyWalkController.WalkingStyle.RandomWalkingStyle;
+    private EnemyWalkController walkController;
+
     private void Start()
     {
-        jamesBond = transform.Find("JamesBond").gameObject;
+        enemy = transform.Find("JamesBond").gameObject;
         player = GameObject.Find("Hanchman").gameObject;
-        jamesBondRb = jamesBond.GetComponent<Rigidbody2D>();
+        enemyRb = enemy.GetComponent<Rigidbody2D>();
         playerRb = player.GetComponent<Rigidbody2D>();
+
+        walkController = EnemyWalkController.Create(walkingStyle, enemyBaseSpeed, playerRb, enemyRb);
+        walkController.BeginWalk();
     }
 
     private void Update()
@@ -53,47 +47,32 @@ public class BasicEnemyController : MonoBehaviour
         switch (currentState)
         {
             case State.Walking:
-                UpdateWalkingState();
-                break;
-            default:
+                walkController.UpdateWalkingState();
                 break;
         }
     }
 
-    private void Flip()
+    private void SetState(State newState)
     {
-
-    }
-
-    // WALKING STATE
-
-    private void EnterWalkingState()
-    {
-
-    }
-
-    private void UpdateWalkingState()
-    {
-        wallDetected = Physics2D.Raycast(wallCheck.position, transform.right, wallCheckDistance, whatIsWall);
-
-        if (jamesBondRb.position.x > playerRb.position.x)
+        if (newState == currentState)
         {
-            direction = 1;
-        }
-        else
-        {
-            direction = -1;
+            return;
         }
 
-        movement.Set(playerRb.position.x * direction * movementSpeed, playerRb.position.y * movementSpeed);
-        jamesBondRb.velocity = movement;
-        //transform.position = Vector3.MoveTowards(transform.position, playerRb.position, movementSpeed * Time.deltaTime);
-    }
+        switch (currentState)
+        {
+            case State.Walking:
+                walkController.EndWalk();
+                break;
+        }
 
-    private void ExitWalkingState()
-    {
+        currentState = newState;
 
+        switch (currentState)
+        {
+            case State.Walking:
+                walkController.BeginWalk();
+                break;
+        }
     }
 }
-
-

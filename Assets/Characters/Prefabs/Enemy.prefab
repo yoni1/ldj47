@@ -207,12 +207,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 819c2141d1b224b6689583613a9cc876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1
   wallCheck: {fileID: 8270477382168763049}
   wallCheckDistance: 0
   whatIsWall:
     serializedVersion: 2
     m_Bits: 512
+  enemyBaseSpeed: 1
+  walkingStyle: 0
 --- !u!60 &1235464579
 PolygonCollider2D:
   m_ObjectHideFlags: 0
