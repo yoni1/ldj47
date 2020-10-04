@@ -125,6 +125,7 @@ public class MovingInCircle : MonoBehaviour
 
     private void RotateSprite(Vector2 newPosition)
     {
+        Debug.Log("Entering RotateSprite");
         Vector2 fishTankPos = (Vector2)fishtank.transform.position;
         Vector2 lookDirection = newPosition - fishTankPos;
 
@@ -169,15 +170,13 @@ public class MovingInCircle : MonoBehaviour
                 break;
         }
 
-        Vector2 shootDirection = newPosition - (Vector2)currentFirePoint.transform.position;
-        float shootAngle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
-
-        currentFirePoint.transform.rotation = Quaternion.Euler(0, 0, shootAngle);
+        currentFirePoint.transform.rotation = Quaternion.Euler(0, 0, angle - 180);
 
     }
 
     private bool MovePlayer(Vector2 endPos)
     {
+        Debug.Log("Entering MovePlayer");
         Vector3 henchmanPos = henchman.transform.position;
         Vector3 fishtankPos = fishtank.transform.position;
 
@@ -206,6 +205,7 @@ public class MovingInCircle : MonoBehaviour
             fishtankPos.z);
 
         henchman.transform.position = newPos;
+        RotateSprite((Vector2)newPos);
         return false;
     }
 
