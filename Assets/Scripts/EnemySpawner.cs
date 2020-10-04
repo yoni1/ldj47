@@ -9,8 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public float elapsedTime = 0.0f;
     public GameObject enemyObjectPrefab; 
 
-    [SerializeField]
-    private List<float> secondsBetweenSpawn;
+    public List<float> secondsBetweenSpawn;
 
     private new int i = 0;
 
