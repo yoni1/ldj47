@@ -292,7 +292,7 @@ public class MovingInCircle : MonoBehaviour
 
     void DragFishtank()
     {
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+        Vector3 movement = Vector3.Normalize(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0));
         movement *= dragging_speed;
         fishtank.transform.position += movement;
         henchman.transform.position += movement;
