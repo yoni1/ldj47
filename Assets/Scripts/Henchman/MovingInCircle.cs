@@ -21,6 +21,8 @@ public class MovingInCircle : MonoBehaviour
     [SerializeField]
     private float dragProximity = 0.03f;
 
+    public GameObject line;
+
     //meant for isometric calc
     private float squishFactor = 2f;
 
@@ -73,6 +75,26 @@ public class MovingInCircle : MonoBehaviour
         return movement;
     }
 
+    private void MoveLine()
+    {
+        //line.transform.position = henchman.transform.position;
+        line.transform.position = (henchman.transform.position - fishtank.transform.position) / 1.2f + fishtank.transform.position;
+        float pi = Mathf.PI;
+        if (((angle < 2 * pi) && (angle > pi)) || ((angle > -pi) && (angle < 0)))
+        {
+            henchman.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
+            line.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            fishtank.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        }
+        else
+        {
+            henchman.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
+            line.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            fishtank.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
+        }
+        line.transform.eulerAngles = new Vector3(0, 0, angle * 180 / (Mathf.PI));
+    }
+
     private bool GoClockwise(Vector2 currentPos, Vector2 endPos)
     {
         Vector2 currentFix = currentPos - (Vector2)fishtank.transform.position;
@@ -105,7 +127,8 @@ public class MovingInCircle : MonoBehaviour
         angle += angularSpeed;//* Time.deltaTime;;
         if (angle > 2 * Mathf.PI)
             angle -= 2 * Mathf.PI;
-
+        if (angle < -2 - Mathf.PI)
+            angle += 2 * Mathf.PI;
 
         Vector3 offset = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
 
@@ -139,5 +162,6 @@ public class MovingInCircle : MonoBehaviour
                 DragFishtank();
             }
         }
+        MoveLine();
     }
 }
