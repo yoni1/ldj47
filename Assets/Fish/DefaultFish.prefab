@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6803271234531277091}
   - component: {fileID: 6912390756797396489}
   - component: {fileID: 1277453171}
+  - component: {fileID: -1361419391102446914}
   m_Layer: 0
   m_Name: DefaultFish
   m_TagString: Untagged
@@ -176,3 +177,15 @@ PolygonCollider2D:
       - {x: 0.034539223, y: -0.12142825}
       - {x: 0.059385836, y: -0.1214419}
       - {x: 0.08166268, y: -0.08251758}
+--- !u!114 &-1361419391102446914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3033159324101631210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fedc80d344ab481da41237182f32a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
