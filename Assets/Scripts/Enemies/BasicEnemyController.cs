@@ -4,76 +4,75 @@ using UnityEngine;
 
 public class BasicEnemyController : MonoBehaviour
 {
-  private enum State {
-    Walking,
-    Knockback,
-    Dead
-  }
-
-  private State currentState;
-
-  [SerializeField]
-  private float movementSpeed;
-
-  private int direction;
-
-  private Vector2 movement;
-  private GameObject jamesBond, player;
-  private Rigidbody2D jamesBondRb, playerRb;
-
-  private bool wallDetected;
-
-  [SerializeField]
-  private Transform wallCheck;
-
-  [SerializeField]
-  private float wallCheckDistance;
-
-  [SerializeField]
-  private LayerMask whatIsWall;
-
-  private void Start() {
-    jamesBond = transform.Find("JamesBond").gameObject;
-    player = GameObject.Find("Hanchman").gameObject;
-    jamesBondRb = jamesBond.GetComponent<Rigidbody2D>();
-    playerRb = player.GetComponent<Rigidbody2D>();
-  }
-
-  private void Update() {
-    switch (currentState) {
-      case State.Walking:
-        UpdateWalkingState();
-        break;
-      default:
-        break;
-    }
-  }
-
-  private void Flip() {
-
-  }
-
-  // WALKING STATE
-
-  private void EnterWalkingState() {
-
-  }
-
-  private void UpdateWalkingState() {
-    wallDetected = Physics2D.Raycast(wallCheck.position, transform.right, wallCheckDistance, whatIsWall);
-
-    if (jamesBondRb.position.x > playerRb.position.x) {
-      direction = 1;
-    } else {
-      direction = -1;
+    private enum State
+    {
+        Walking,
+        Knockback,
+        Dead
     }
 
-    movement.Set(playerRb.position.x * direction * movementSpeed, playerRb.position.y * movementSpeed);
-    jamesBondRb.velocity = movement;
-    //transform.position = Vector3.MoveTowards(transform.position, playerRb.position, movementSpeed * Time.deltaTime);
-  }
+    private State currentState;
 
-  private void ExitWalkingState() {
+    private GameObject enemy, player;
+    private Rigidbody2D enemyRb, playerRb;
 
-  }
+    [SerializeField]
+    private Transform wallCheck;
+
+    [SerializeField]
+    private float wallCheckDistance;
+
+    [SerializeField]
+    private LayerMask whatIsWall;
+
+    [SerializeField]
+    private float enemyBaseSpeed;
+
+    public EnemyWalkController.WalkingStyle walkingStyle = EnemyWalkController.WalkingStyle.RandomWalkingStyle;
+    private EnemyWalkController walkController;
+
+    private void Start()
+    {
+        enemy = transform.Find("JamesBond").gameObject;
+        player = GameObject.Find("Hanchman").gameObject;
+        enemyRb = enemy.GetComponent<Rigidbody2D>();
+        playerRb = player.GetComponent<Rigidbody2D>();
+
+        walkController = EnemyWalkController.Create(walkingStyle, enemyBaseSpeed, playerRb, enemyRb);
+        walkController.BeginWalk();
+    }
+
+    private void Update()
+    {
+        switch (currentState)
+        {
+            case State.Walking:
+                walkController.UpdateWalkingState();
+                break;
+        }
+    }
+
+    private void SetState(State newState)
+    {
+        if (newState == currentState)
+        {
+            return;
+        }
+
+        switch (currentState)
+        {
+            case State.Walking:
+                walkController.EndWalk();
+                break;
+        }
+
+        currentState = newState;
+
+        switch (currentState)
+        {
+            case State.Walking:
+                walkController.BeginWalk();
+                break;
+        }
+    }
 }
