@@ -467,7 +467,7 @@ MonoBehaviour:
   N: {fileID: 21300000, guid: 389edd51c2d924eda99f9df23ab0de82, type: 3}
   NW: {fileID: 21300000, guid: 629514b5abad94fe1a1e25c133491a4a, type: 3}
   W: {fileID: 21300000, guid: d51590faa0ff742bab7543c1d3113787, type: 3}
-  pinkSpotFactor: 2.11
+  pinkSpotFactor: 1.92
   pipeTextureFactor: 0.004
 --- !u!1 &106114856
 GameObject:
