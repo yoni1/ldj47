@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 101794945}
   - component: {fileID: 101794944}
   m_Layer: 0
-  m_Name: Hanchman
+  m_Name: Henchman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

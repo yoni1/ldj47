@@ -34,7 +34,7 @@ public class BasicEnemyController : MonoBehaviour
     private void Start()
     {
         enemy = transform.Find("JamesBond").gameObject;
-        player = GameObject.Find("Hanchman").gameObject;
+        player = GameObject.Find("Henchman").gameObject;
         enemyRb = enemy.GetComponent<Rigidbody2D>();
         playerRb = player.GetComponent<Rigidbody2D>();
 
