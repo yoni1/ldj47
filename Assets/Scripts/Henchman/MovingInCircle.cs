@@ -21,7 +21,8 @@ public class MovingInCircle : MonoBehaviour
     [SerializeField]
     private float dragProximity = 0.03f;
 
-    public GameObject line;
+    [SerializeField]
+    private GameObject pinkspot;
 
     //meant for isometric calc
     private float squishFactor = 2f;
@@ -40,12 +41,21 @@ public class MovingInCircle : MonoBehaviour
     [SerializeField]
     private Vector2 vector2_debug3;
 
-    public GameObject currentFirePoint;
+    public Transform currentFirePoint;
+    public Transform currentTetherPoint;
 
-    private Dictionary<SpriteDirectionResolver.Direction, GameObject> dirToFirePoint;
+    private Dictionary<SpriteDirectionResolver.Direction, Transform> dirToFirePoint;
+    private Dictionary<SpriteDirectionResolver.Direction, Transform> dirToTetherPoint;
 
     public Sprite S;
+    public Sprite SW;
     public Sprite N;
+    public Sprite NW;
+    public Sprite W;
+
+    public float pinkSpotFactor = 2.11f;
+
+    private LineRenderer lineRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -57,14 +67,36 @@ public class MovingInCircle : MonoBehaviour
         radius = radiusVector.magnitude;
         angle = Mathf.Atan(radiusVector.y / radiusVector.x);
 
-        dirToFirePoint = new Dictionary<SpriteDirectionResolver.Direction, GameObject> {
-                {SpriteDirectionResolver.Direction.SW, this.gameObject.transform.GetChild(0).gameObject},
-                {SpriteDirectionResolver.Direction.NE, this.gameObject.transform.GetChild(1).gameObject},
-                {SpriteDirectionResolver.Direction.NW, this.gameObject.transform.GetChild(2).gameObject},
-                {SpriteDirectionResolver.Direction.SE, this.gameObject.transform.GetChild(3).gameObject}
+        dirToFirePoint = new Dictionary<SpriteDirectionResolver.Direction, Transform> {
+                {SpriteDirectionResolver.Direction.E, this.gameObject.transform.Find("FirePointE")},
+                {SpriteDirectionResolver.Direction.NE, this.gameObject.transform.Find("FirePointNE")},
+                {SpriteDirectionResolver.Direction.N, this.gameObject.transform.Find("FirePointN")},
+                {SpriteDirectionResolver.Direction.NW, this.gameObject.transform.Find("FirePointNW")},
+                {SpriteDirectionResolver.Direction.W, this.gameObject.transform.Find("FirePointW")},
+                {SpriteDirectionResolver.Direction.SW, this.gameObject.transform.Find("FirePointSW")},
+                {SpriteDirectionResolver.Direction.S, this.gameObject.transform.Find("FirePointS")},
+                {SpriteDirectionResolver.Direction.SE, this.gameObject.transform.Find("FirePointSE")}
             };
 
-        currentFirePoint = dirToFirePoint[SpriteDirectionResolver.Direction.SW];
+        dirToTetherPoint = new Dictionary<SpriteDirectionResolver.Direction, Transform> {
+                {SpriteDirectionResolver.Direction.E, this.gameObject.transform.Find("TetherPointE")},
+                {SpriteDirectionResolver.Direction.NE, this.gameObject.transform.Find("TetherPointNE")},
+                {SpriteDirectionResolver.Direction.N, this.gameObject.transform.Find("TetherPointN")},
+                {SpriteDirectionResolver.Direction.NW, this.gameObject.transform.Find("TetherPointNW")},
+                {SpriteDirectionResolver.Direction.W, this.gameObject.transform.Find("TetherPointW")},
+                {SpriteDirectionResolver.Direction.SW, this.gameObject.transform.Find("TetherPointSW")},
+                {SpriteDirectionResolver.Direction.S, this.gameObject.transform.Find("TetherPointS")},
+                {SpriteDirectionResolver.Direction.SE, this.gameObject.transform.Find("TetherPointSE")}
+            };
+
+        currentFirePoint = dirToFirePoint[SpriteDirectionResolver.Direction.E];
+        currentTetherPoint = dirToTetherPoint[SpriteDirectionResolver.Direction.E];
+
+        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.positionCount = 2;
+
+        UpdatePinkLine();
+
     }
 
     private Vector2 get_to_position()
@@ -92,22 +124,25 @@ public class MovingInCircle : MonoBehaviour
 
     private void MoveLine()
     {
-        //line.transform.position = henchman.transform.position;
-        line.transform.position = (henchman.transform.position - fishtank.transform.position) / 1.2f + fishtank.transform.position;
-        float pi = Mathf.PI;
-        if (((angle < 2 * pi) && (angle > pi)) || ((angle > -pi) && (angle < 0)))
-        {
-            henchman.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
-            line.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
-            fishtank.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
-        }
-        else
-        {
-            henchman.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
-            line.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
-            fishtank.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
-        }
-        line.transform.eulerAngles = new Vector3(0, 0, angle * 180 / (Mathf.PI));
+        ////line.transform.position = henchman.transform.position;
+        //line.transform.position = (henchman.transform.position - fishtank.transform.position) / 1.2f + fishtank.transform.position;
+        //pinkspot.transform.position = (henchman.transform.position - fishtank.transform.position) / float_debug1 + fishtank.transform.position;
+
+
+        //float pi = Mathf.PI;
+        //if (((angle < 2 * pi) && (angle > pi)) || ((angle > -pi) && (angle < 0)))
+        //{
+        //    henchman.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
+        //    line.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        //    fishtank.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        //}
+        //else
+        //{
+        //    henchman.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        //    line.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        //    fishtank.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
+        //}
+        //line.transform.eulerAngles = new Vector3(0, 0, angle * 180 / (Mathf.PI));
     }
 
     private bool GoClockwise(Vector2 currentPos, Vector2 endPos)
@@ -134,38 +169,42 @@ public class MovingInCircle : MonoBehaviour
         SpriteDirectionResolver.Direction direction = SpriteDirectionResolver.ResolveDirection(-angle);
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
 
+
+        currentFirePoint = dirToFirePoint[direction];
+        currentTetherPoint = dirToTetherPoint[direction];
+
         switch (direction)
         {
             case SpriteDirectionResolver.Direction.W:
+                renderer.sprite = W;
+                renderer.flipX = false;
                 break;
             case SpriteDirectionResolver.Direction.NW:
-                renderer.sprite = N;
-                currentFirePoint = dirToFirePoint[SpriteDirectionResolver.Direction.NW];
-                Debug.Log($"Sprite is now N, angle is {angle}");
+                renderer.sprite = NW;
                 renderer.flipX = false;
                 break;
             case SpriteDirectionResolver.Direction.N:
+                renderer.sprite = N;
+                renderer.flipX = false;
                 break;
             case SpriteDirectionResolver.Direction.NE:
-                renderer.sprite = N;
-                currentFirePoint = dirToFirePoint[SpriteDirectionResolver.Direction.NE];
-                Debug.Log($"Sprite is now N flip, angle is {angle}");
+                renderer.sprite = NW;
                 renderer.flipX = true;
                 break;
             case SpriteDirectionResolver.Direction.E:
+                renderer.sprite = W;
+                renderer.flipX = true;
                 break;
             case SpriteDirectionResolver.Direction.SE:
-                renderer.sprite = S;
-                currentFirePoint = dirToFirePoint[SpriteDirectionResolver.Direction.SE];
-                Debug.Log($"Sprite is now S flip, angle is {angle}");
+                renderer.sprite = SW;
                 renderer.flipX = true;
                 break;
             case SpriteDirectionResolver.Direction.S:
+                renderer.sprite = S;
+                renderer.flipX = false;
                 break;
             case SpriteDirectionResolver.Direction.SW:
-                renderer.sprite = S;
-                currentFirePoint = dirToFirePoint[SpriteDirectionResolver.Direction.SW];
-                Debug.Log($"Sprite is now S, angle is {angle}");
+                renderer.sprite = SW;
                 renderer.flipX = false;
                 break;
         }
@@ -183,8 +222,7 @@ public class MovingInCircle : MonoBehaviour
         if ((endPos - (Vector2)henchmanPos).magnitude < dragProximity)
             return true;
 
-        float_debug1 = (endPos - (Vector2)henchmanPos).magnitude;
-
+ 
         float clockwise = -1f;
         if (GoClockwise((Vector2)henchmanPos, endPos))
         {
@@ -205,8 +243,41 @@ public class MovingInCircle : MonoBehaviour
             fishtankPos.z);
 
         henchman.transform.position = newPos;
+
+        float pi = Mathf.PI;
+        if (((angle < 2 * pi) && (angle > pi)) || ((angle > -pi) && (angle < 0)))
+        {
+            henchman.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
+            lineRenderer.sortingOrder = 1;
+            fishtank.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        }
+        else
+        {
+            henchman.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            lineRenderer.sortingOrder = 0;
+            fishtank.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
+        }
+
         RotateSprite((Vector2)newPos);
         return false;
+    }
+
+    void UpdatePinkLine()
+    {
+
+        //GameObject lineConnector = this.gameObject.transform.GetChild(4).gameObject;
+        //Vector3 lineVector = (lineConnector.transform.position - pinkspot.transform.position);
+
+        //Vector3 middlePoint = pinkspot.transform.position + (lineVector / 2);
+
+        //pinkLine.transform.position = middlePoint;
+        //pinkLine.transform.localScale = new Vector3(1, 1, lineVector.magnitude);
+
+        //float angle = Mathf.Atan2(lineVector.y, lineVector.x) * Mathf.Rad2Deg - 180f;
+        //pinkLine.transform.rotation = Quaternion.Euler(0, 0, angle);
+        pinkspot.transform.position = (henchman.transform.position - fishtank.transform.position) / pinkSpotFactor + fishtank.transform.position;
+        lineRenderer.SetPosition(0, pinkspot.transform.position);
+        lineRenderer.SetPosition(1, currentTetherPoint.position);
     }
 
     void DragFishtank()
@@ -229,7 +300,8 @@ public class MovingInCircle : MonoBehaviour
                 Debug.Log("Start dragging here");
                 DragFishtank();
             }
+
+            UpdatePinkLine();
         }
-        MoveLine();
     }
 }
