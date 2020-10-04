@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8753042192767992886}
   - component: {fileID: 6803271234531277091}
   - component: {fileID: 6912390756797396489}
-  - component: {fileID: 4488220520446608972}
+  - component: {fileID: 9129341664496913591}
   - component: {fileID: -1361419391102446914}
-  m_Layer: 10
-  m_Name: DefaultFish
+  m_Layer: 0
+  m_Name: Eel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: -1974092869
   m_SortingLayer: 2
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: f0481f404da7240be8ae3c4db0c90a36, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 78f714e2722d1474092c42b7158dccbb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -97,14 +97,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15cd18b6f508840fda30aa5612b42447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NW: {fileID: 21300000, guid: d1ffc028103854cc8b458261185dcf06, type: 3}
-  N: {fileID: 21300000, guid: ba6e9ca1261764512863b832f24859d2, type: 3}
-  NE: {fileID: 21300000, guid: f1565c0575ca54777a9c6a54d1933540, type: 3}
-  E: {fileID: 21300000, guid: c769acdff8462442d9c69b3746272502, type: 3}
-  SE: {fileID: 21300000, guid: 86022dae76d9a4c1fb1ca5a11c0f886e, type: 3}
-  S: {fileID: 21300000, guid: 47e6c386c862c4889a4f2d29de545922, type: 3}
-  SW: {fileID: 21300000, guid: 3553a4de3a0a047b0bf70011e9a0af0a, type: 3}
-  W: {fileID: 21300000, guid: f0481f404da7240be8ae3c4db0c90a36, type: 3}
+  NW: {fileID: 21300000, guid: 1a18ae30168983549922fb269baaf7ea, type: 3}
+  N: {fileID: 21300000, guid: ddcc43d06ac8a9346822216ee51132b8, type: 3}
+  NE: {fileID: 21300000, guid: e5d1ba72cf218a045bd1a19a81143950, type: 3}
+  E: {fileID: 21300000, guid: 50204db47f49a1640b7d37481a83284e, type: 3}
+  SE: {fileID: 21300000, guid: 7c9d7621c91d72a4da71a09eaf8b78e6, type: 3}
+  S: {fileID: 21300000, guid: fb9f546026f321644bb6a6b24140e00e, type: 3}
+  SW: {fileID: 21300000, guid: 4ada5c0376540bc4fb1617bafec80d33, type: 3}
+  W: {fileID: 21300000, guid: 78f714e2722d1474092c42b7158dccbb, type: 3}
 --- !u!50 &6912390756797396489
 Rigidbody2D:
   serializedVersion: 4
@@ -126,8 +126,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &4488220520446608972
-CircleCollider2D:
+--- !u!70 &9129341664496913591
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -140,8 +140,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.125
+  m_Size: {x: 1.44, y: 0.72}
+  m_Direction: 1
 --- !u!114 &-1361419391102446914
 MonoBehaviour:
   m_ObjectHideFlags: 0
