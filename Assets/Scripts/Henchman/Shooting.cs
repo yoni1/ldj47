@@ -20,7 +20,7 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
-        Transform currentFirePoint = GetComponent<SpriteChanges>().currentFirePoint.transform;
+        Transform currentFirePoint = GetComponent<MovingInCircle>().currentFirePoint.transform;
         GameObject fish = Instantiate(fishPrefab, currentFirePoint.position, Quaternion.identity);
         FishProperties fishProperties = (FishProperties)fish.GetComponent(typeof(FishProperties));
 

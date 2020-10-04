@@ -39,7 +39,7 @@ public class BasicEnemyController : MonoBehaviour
     playerRb = player.GetComponent<Rigidbody2D>();
   }
 
-  private void FixedUpdate() {
+  private void Update() {
     switch (currentState) {
       case State.Walking:
         UpdateWalkingState();

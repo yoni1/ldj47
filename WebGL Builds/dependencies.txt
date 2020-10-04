@@ -19,4 +19,4 @@ com.unity.ugui@1.0.0
 com.unity.ide.vscode@1.2.1
 com.unity.ide.visualstudio@2.0.2
 com.unity.connect.share@2.1.0
-TheLastHanchman@1.0
+The Last Henchman@1.0
