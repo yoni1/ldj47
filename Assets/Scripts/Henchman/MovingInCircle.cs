@@ -42,6 +42,8 @@ public class MovingInCircle : MonoBehaviour
     public float pinkSpotFactor = 2.11f;
     public float pipeTextureFactor = 2f;
 
+    public bool canMove = true;
+
     private LineRenderer lineRenderer;
 
     // Start is called before the first frame update
@@ -261,6 +263,9 @@ public class MovingInCircle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canMove)
+            return;
+
         Vector2 endPos = get_to_position();
         if (endPos != default)
         {
