@@ -25,6 +25,7 @@ public abstract class EnemyWalkController
 
     public virtual void EndWalk()
     {
+        enemyRb.velocity = new Vector2(0, 0);
     }
 
     public virtual void OnCollide()

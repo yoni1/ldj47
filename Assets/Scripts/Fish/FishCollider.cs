@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class FishCollider : MonoBehaviour
 {
-    public GameObject hitEffect;
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-        Destroy(effect, 3f);
-        Destroy(gameObject);
+        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<BasicEnemyController>().GetState() != BasicEnemyController.State.Dead)
+            Destroy(gameObject);
     }
 }

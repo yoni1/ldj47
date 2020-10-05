@@ -124,14 +124,12 @@ public class MovingInCircle : MonoBehaviour
 
     private void RotateSprite(Vector2 newPosition)
     {
-        Debug.Log("Entering RotateSprite");
         Vector2 fishTankPos = (Vector2)fishtank.transform.position;
         Vector2 lookDirection = newPosition - fishTankPos;
 
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 180f;
 
         SpriteDirectionResolver.Direction direction = SpriteDirectionResolver.ResolveDirection(-angle);
-        Debug.Log($"The direction is: {direction}");
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
 
 
@@ -180,7 +178,6 @@ public class MovingInCircle : MonoBehaviour
 
     private bool MovePlayer(Vector2 endPos)
     {
-        Debug.Log("Entering MovePlayer");
         Vector3 henchmanPos = henchman.transform.position;
         Vector3 fishtankPos = fishtank.transform.position;
 
