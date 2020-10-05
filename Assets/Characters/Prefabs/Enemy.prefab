@@ -212,7 +212,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   enemyBaseSpeed: 1
+  bulletSpeed: 0
   walkingStyle: 0
+  bulletStyle: 1
 --- !u!60 &1235464579
 PolygonCollider2D:
   m_ObjectHideFlags: 0
