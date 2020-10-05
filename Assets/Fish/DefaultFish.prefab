@@ -155,6 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fedc80d344ab481da41237182f32a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSrc: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: c9bde3d1ce3b9544e8d7c15da17ed11e, type: 3}
 --- !u!114 &-5427635703948328004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,4 +169,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e5bb5c86614374faf31f1338063c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dbg: 1
+  sortingLayerOffset: 0
