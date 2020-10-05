@@ -14,8 +14,9 @@ public class BasicEnemyController : MonoBehaviour
     private State currentState;
 
     private float elapsedTime = 0.0f;
-    private GameObject enemy, player, bullet;
-    private Rigidbody2D enemyRb, playerRb, bulletRb;
+    private GameObject enemy, player;
+    private Rigidbody2D enemyRb, playerRb;
+    public GameObject bulletPrefab;
 
     [SerializeField]
     private Transform wallCheck;
@@ -48,6 +49,7 @@ public class BasicEnemyController : MonoBehaviour
         walkController = EnemyWalkController.Create(walkingStyle, enemyBaseSpeed, playerRb, enemyRb);
         walkController.BeginWalk();
 
+        bulletController = EnemyBulletController.Create(bulletStyle, bulletSpeed, playerRb, enemyRb, bulletPrefab);
     }
 
     private void Update()
@@ -60,19 +62,15 @@ public class BasicEnemyController : MonoBehaviour
         }
 
         spawnBullet();
-
     }
     
     private void spawnBullet()
     {
-
         elapsedTime += Time.deltaTime;
         if (elapsedTime > bulletController.bulletFrequency)
         {
-            bullet = Instantiate(bullet);
-            bulletRb = bullet.GetComponent<Rigidbody2D>();
-            bulletController = EnemyBulletController.Create(bulletStyle, bulletSpeed, playerRb, enemyRb, bulletRb);
             bulletController.ShootBullet();
+            elapsedTime -= bulletController.bulletFrequency;
         }
     }
 

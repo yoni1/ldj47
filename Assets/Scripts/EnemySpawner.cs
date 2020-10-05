@@ -21,6 +21,9 @@ public class EnemySpawner : MonoBehaviour
         // TODO: Choose walking style
         BasicEnemyController newEnemyController = newEnemy.GetComponent<BasicEnemyController>();
         newEnemyController.walkingStyle = EnemyWalkController.WalkingStyle.ZigZagWideStartRight;
+
+        // TODO: Choose bullet style
+        newEnemyController.bulletStyle = EnemyBulletController.BulletStyle.DirectDown;
     }
 
     void Update()
