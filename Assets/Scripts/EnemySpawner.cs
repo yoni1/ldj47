@@ -10,10 +10,9 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyObjectPrefab; 
 
     public List<float> secondsBetweenSpawn;
-    public GameObject bulletFab;
-    public EnemyBulletController.BulletStyle bulletStyle;
-    public float bulletFrequncy;
+
     private new int i = 0;
+    private System.Random rnd = new System.Random();
 
     void SpawnEnemy()
     {
@@ -22,9 +21,30 @@ public class EnemySpawner : MonoBehaviour
 
         // TODO: Choose walking style
         BasicEnemyController newEnemyController = newEnemy.GetComponent<BasicEnemyController>();
-        newEnemyController.walkingStyle = EnemyWalkController.WalkingStyle.ZigZagWideStartRight;
-        newEnemyController.bulletStyle = bulletStyle;
-        newEnemyController.bullet = bulletFab;
+        switch (rnd.Next(3))
+        {
+            case 0:
+                newEnemyController.walkingStyle = EnemyWalkController.WalkingStyle.JustDown;
+                break;
+            case 1:
+                newEnemyController.walkingStyle = EnemyWalkController.WalkingStyle.ZigZagWideStartRight;
+                break;
+            case 2:
+                newEnemyController.walkingStyle = EnemyWalkController.WalkingStyle.ZigZagWideStartLeft;
+                break;
+        }
+
+        // TODO: Choose bullet style
+        switch (rnd.Next(2))
+        {
+            case 0:
+                newEnemyController.bulletStyle = EnemyBulletController.BulletStyle.DirectDown;
+                break;
+
+            case 1:
+                newEnemyController.bulletStyle = EnemyBulletController.BulletStyle.At45DegreesToAquarium;
+                break;
+        }
     }
 
     void Update()

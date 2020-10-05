@@ -15,9 +15,8 @@ public class BasicEnemyController : MonoBehaviour
 
     private float elapsedTime = 0.0f;
     private GameObject enemy, player;
-    private Rigidbody2D enemyRb, playerRb, bulletRb;
-
-    public GameObject bullet;
+    private Rigidbody2D enemyRb, playerRb;
+    public GameObject bulletPrefab;
 
     [SerializeField]
     private Transform wallCheck;
@@ -32,7 +31,7 @@ public class BasicEnemyController : MonoBehaviour
     private float enemyBaseSpeed;
 
     [SerializeField]
-    private float bulletFrequency;
+    private float bulletSpeed;
 
     public EnemyWalkController.WalkingStyle walkingStyle;
     private EnemyWalkController walkController;
@@ -50,6 +49,7 @@ public class BasicEnemyController : MonoBehaviour
         walkController = EnemyWalkController.Create(walkingStyle, enemyBaseSpeed, playerRb, enemyRb);
         walkController.BeginWalk();
 
+        bulletController = EnemyBulletController.Create(bulletStyle, bulletSpeed, playerRb, enemyRb, bulletPrefab);
     }
 
     private void Update()
@@ -62,19 +62,25 @@ public class BasicEnemyController : MonoBehaviour
         }
 
         spawnBullet();
-
     }
     
     private void spawnBullet()
     {
+        if (bulletController == null)
+        {
+            return;
+        }
 
         elapsedTime += Time.deltaTime;
         if (elapsedTime > bulletController.bulletFrequency)
         {
-            bullet = Instantiate(bullet);
-            bulletRb = bullet.GetComponent<Rigidbody2D>();
-            bulletController = EnemyBulletController.Create(bulletStyle, bulletFrequency, playerRb, enemyRb, bulletRb);
-            bulletController.ShootBullet();
+            GameObject bullet = Instantiate(bulletPrefab, enemyRb.transform.position, Quaternion.identity);
+            Destroy(bullet, 5.0f);
+
+            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+            bulletRb.AddForce(bulletController.CalcBulletFireDirection(), ForceMode2D.Impulse);
+
+            elapsedTime -= bulletController.bulletFrequency;
         }
     }
 

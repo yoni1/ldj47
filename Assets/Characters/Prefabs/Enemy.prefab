@@ -206,6 +206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 819c2141d1b224b6689583613a9cc876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7800723029627546974, guid: bee8355ebb1fde3458cd64650a19b040,
+    type: 3}
   wallCheck: {fileID: 8270477382168763049}
   wallCheckDistance: 0
   whatIsWall:
@@ -214,7 +216,7 @@ MonoBehaviour:
   enemyBaseSpeed: 1
   bulletSpeed: 0
   walkingStyle: 0
-  bulletStyle: 1
+  bulletStyle: 0
 --- !u!60 &1235464579
 PolygonCollider2D:
   m_ObjectHideFlags: 0

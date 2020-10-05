@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class BulletDirectDown : EnemyBulletController
 {
-    private Vector3 worldVector = new Vector3();
+    const float bulletForce = 3f;
 
-    float bulletForce = 12.4f;
-   
-
-    public override void ShootBullet()
+    public override Vector3 CalcBulletFireDirection()
     {
-        Vector3 currentFirePoint = new Vector3(playerRb.transform.position.y, -1, 0);
-        bulletRb.AddForce(currentFirePoint*bulletForce, ForceMode2D.Impulse);
+        return new Vector3(0, -1, 0) * bulletForce;
     }
 }
