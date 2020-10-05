@@ -205,7 +205,7 @@ public class MovingInCircle : MonoBehaviour
             fishtankPos.z);
 
         henchman.transform.position = newPos;
-
+/*
         float pi = Mathf.PI;
         if (((angle < 2 * pi) && (angle > pi)) || ((angle > -pi) && (angle < 0)))
         {
@@ -217,7 +217,7 @@ public class MovingInCircle : MonoBehaviour
             henchman.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
             fishtank.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
         }
-
+*/
         RotateSprite((Vector2)newPos);
         return false;
     }

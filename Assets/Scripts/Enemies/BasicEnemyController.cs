@@ -99,7 +99,7 @@ public class BasicEnemyController : MonoBehaviour
                 break;
             case State.Dead:
                 SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-                renderer.sortingOrder = 0;
+                //renderer.sortingOrder = 0;
                 renderer.sprite = deadSprite;
                 Destroy(gameObject, 1.5f);
                 break;

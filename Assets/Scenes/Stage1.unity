@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -229,6 +229,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1649159561}
     m_Modifications:
+    - target: {fileID: 1723208116703450442, guid: b7dab40b871b3aa4eb48f6eed17becea,
+        type: 3}
+      propertyPath: dbg
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1868232888498826984, guid: b7dab40b871b3aa4eb48f6eed17becea,
+        type: 3}
+      propertyPath: dbg
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337769859713632357, guid: b7dab40b871b3aa4eb48f6eed17becea,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8337769859713632411, guid: b7dab40b871b3aa4eb48f6eed17becea,
         type: 3}
       propertyPath: currentTetherPoint
@@ -326,6 +341,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 671464627}
     m_Modifications:
+    - target: {fileID: 7682823174332211122, guid: 0e10d65626013ac4aab8f4bd1f00d603,
+        type: 3}
+      propertyPath: dbg
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8542623575557910493, guid: 0e10d65626013ac4aab8f4bd1f00d603,
         type: 3}
       propertyPath: m_Name
@@ -802,6 +822,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 671464627}
     m_Modifications:
+    - target: {fileID: 7682823174332211122, guid: 0e10d65626013ac4aab8f4bd1f00d603,
+        type: 3}
+      propertyPath: dbg
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8542623575557910493, guid: 0e10d65626013ac4aab8f4bd1f00d603,
         type: 3}
       propertyPath: m_Name
@@ -931,8 +956,8 @@ Camera:
   m_GameObject: {fileID: 738487406}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -986,6 +1011,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 671464627}
     m_Modifications:
+    - target: {fileID: 7682823174332211122, guid: 0e10d65626013ac4aab8f4bd1f00d603,
+        type: 3}
+      propertyPath: dbg
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8542623575557910493, guid: 0e10d65626013ac4aab8f4bd1f00d603,
         type: 3}
       propertyPath: m_Name

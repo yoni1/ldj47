@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 8337769859713632356}
   - component: {fileID: 8337769859713632411}
   - component: {fileID: 8337769859713632410}
+  - component: {fileID: 1723208116703450442}
   m_Layer: 12
   m_Name: Henchman
   m_TagString: Untagged
@@ -325,6 +326,18 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &1723208116703450442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8337769859713632353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e5bb5c86614374faf31f1338063c42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8337769859758813184
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,6 +348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8337769859758813185}
   - component: {fileID: 8337769859758813190}
+  - component: {fileID: 1868232888498826984}
   m_Layer: 0
   m_Name: FishTank
   m_TagString: Untagged
@@ -407,6 +421,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1868232888498826984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8337769859758813184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e5bb5c86614374faf31f1338063c42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8337769860157074145
 GameObject:
   m_ObjectHideFlags: 0
