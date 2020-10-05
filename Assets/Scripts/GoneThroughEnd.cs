@@ -21,8 +21,8 @@ public class GoneThroughEnd : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
+            gameLevelManager.enemyGonePastYou(collision);
             Destroy(collision.gameObject);
-            gameLevelManager.enemyGonePastYou();
         }
     }
 }

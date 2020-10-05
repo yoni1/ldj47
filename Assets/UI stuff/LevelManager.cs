@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
 
     public Text masterHPText;
     public Text enemiesDeadText;
+    public GameObject alert;
 
     // Start is called before the first frame update
     void Start()
@@ -28,10 +29,15 @@ public class LevelManager : MonoBehaviour
         masterHPText.text = "Dead Enemies: " + enemiesDeadCount;
     }
 
-    public void enemyGonePastYou()
+    public void enemyGonePastYou(Collider2D collision)
     {
         enemiesGonePastYouCount++;
+        Vector3 pos = collision.transform.position;
+        Debug.Log("pos " + pos);
+        _ = Instantiate(alert, pos, Quaternion.identity);
+        
         enemiesDeadText.text = "Mastermind HP: " + enemiesGonePastYouCount;
         
+
     }
 }
