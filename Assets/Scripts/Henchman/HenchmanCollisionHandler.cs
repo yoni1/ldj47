@@ -16,6 +16,7 @@ public class HenchmanCollisionHandler : MonoBehaviour
     private Text gameOverText;
 
     public AudioSource deathSound;
+    public AudioSource lostStageSound;
 
     private void Start()
     {
@@ -55,6 +56,7 @@ public class HenchmanCollisionHandler : MonoBehaviour
         if (elapsedTime >= deadBeforeGameOverSec && !gameOverText.enabled)
         {
             gameOverText.enabled = true;
+            lostStageSound.Play();
             return;
         }
 

@@ -6371,7 +6371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 765274136, guid: cb91f5a23632a4e06aae165ba395baf0, type: 3}
       propertyPath: m_Text
-      value: 
+      value: STAGE LOST
       objectReference: {fileID: 0}
     - target: {fileID: 1686866281097776633, guid: cb91f5a23632a4e06aae165ba395baf0,
         type: 3}

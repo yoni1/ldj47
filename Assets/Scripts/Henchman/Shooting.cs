@@ -9,6 +9,7 @@ public class Shooting : MonoBehaviour
 
     public AudioSource shootSound;
     public AudioSource hitSoundSource;
+    public AudioSource powerUpSound;
 
     public float fishForce = 13f;
 
@@ -28,6 +29,8 @@ public class Shooting : MonoBehaviour
     {
         fishPrefab = newFishPrefab;
         remainingPowerupTime = powerupTime;
+
+        powerUpSound.Play();
     }
 
     public void SetPermanentWeapon(GameObject newFishPrefab)

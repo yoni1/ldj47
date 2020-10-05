@@ -77,7 +77,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: GAME OVER
+  m_Text: STAGE LOST
 --- !u!1 &3273889728544874789
 GameObject:
   m_ObjectHideFlags: 0
