@@ -20,6 +20,7 @@ public class BasicEnemyController : MonoBehaviour
 
     [SerializeField]
     private float enemyBaseSpeed;
+    
 
     [SerializeField]
     private float bulletSpeed;
@@ -32,6 +33,7 @@ public class BasicEnemyController : MonoBehaviour
 
     public Sprite deadSprite;
 
+    private SpriteRenderer spriteRenderer;
     private LevelManager gameLevelManager;
 
     private void Start()
@@ -42,6 +44,8 @@ public class BasicEnemyController : MonoBehaviour
 
         walkController = EnemyWalkController.Create(walkingStyle, enemyBaseSpeed, playerRb, enemyRb);
         walkController.BeginWalk();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         bulletController = EnemyBulletController.Create(bulletStyle, bulletSpeed, playerRb, enemyRb, bulletPrefab);
 
@@ -62,7 +66,7 @@ public class BasicEnemyController : MonoBehaviour
     
     private void spawnBullet()
     {
-        if (bulletController == null || currentState == State.Dead)
+        if (bulletController == null || currentState == State.Dead || !spriteRenderer.isVisible)
         {
             return;
         }
