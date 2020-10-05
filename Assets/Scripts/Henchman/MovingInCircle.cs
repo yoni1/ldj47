@@ -46,6 +46,9 @@ public class MovingInCircle : MonoBehaviour
 
     private LineRenderer lineRenderer;
 
+    private bool isDragging = false;
+    public AudioSource dragSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -260,6 +263,16 @@ public class MovingInCircle : MonoBehaviour
         henchman.transform.position += movement;
     }
 
+    void OnDragStarted()
+    {
+        dragSound.Play();
+    }
+
+    void OnDragStopped()
+    {
+        dragSound.Stop();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -274,6 +287,16 @@ public class MovingInCircle : MonoBehaviour
             {
                 //Debug.Log("Start dragging here");
                 DragFishtank();
+            }
+
+            if (dragNow != isDragging)
+            {
+                isDragging = dragNow;
+
+                if (isDragging)
+                    OnDragStarted();
+                else
+                    OnDragStopped();
             }
 
             UpdatePinkLine();

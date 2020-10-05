@@ -28,6 +28,7 @@ public class HenchmanCollisionHandler : MonoBehaviour
                 gameObject.GetComponent<MovingInCircle>().canMove = false;
                 gameObject.GetComponent<Shooting>().canShoot = false;
                 gameObject.GetComponent<SpriteRenderer>().sprite = deadSprite;
+                gameObject.GetComponent<MovingInCircle>().dragSound.Stop();
                 isDead = true;
                 break;
          }
