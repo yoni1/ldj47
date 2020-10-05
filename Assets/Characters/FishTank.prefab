@@ -91,7 +91,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8337769859713632353}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.316, y: 0, z: 0}
+  m_LocalPosition: {x: 1.112, y: -0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 8337769861034361755}
@@ -200,8 +200,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishPrefab: {fileID: 3033159324101631210, guid: 306868ffab40949069ae7d978a8bcfa0,
     type: 3}
-  fishForce: 13
-  shotCooldown: 0.25
+  fishForce: 9
+  shotCooldown: 0.6
   canShoot: 1
 --- !u!114 &8337769859713632411
 MonoBehaviour:
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d1f41718e5194e988af49ee7190a907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.01
+  speed: 0.009
   radius: 0
   dragging_speed: 0.004
   fishtank: {fileID: 8337769859758813184}
