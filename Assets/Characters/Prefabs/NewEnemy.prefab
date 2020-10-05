@@ -50,9 +50,6 @@ MonoBehaviour:
   - 2
   - 6
   - 9
-  - 12
-  - 15
   bulletFab: {fileID: 7800723029627546974, guid: bee8355ebb1fde3458cd64650a19b040,
     type: 3}
   bulletStyle: 1
-  bulletFrequncy: 4
