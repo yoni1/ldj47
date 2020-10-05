@@ -110,6 +110,11 @@ public class BasicEnemyController : MonoBehaviour
     {
         return currentState;
     }
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        walkController.OnCollide();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
