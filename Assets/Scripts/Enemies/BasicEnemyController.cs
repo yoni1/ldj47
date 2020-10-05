@@ -34,6 +34,9 @@ public class BasicEnemyController : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    public float minBulletDeltaT;
+    public float maxBulletDeltaT;
+
     private void Start()
     {
         player = GameObject.Find("Henchman").gameObject;
@@ -45,7 +48,7 @@ public class BasicEnemyController : MonoBehaviour
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        bulletController = EnemyBulletController.Create(bulletStyle, bulletSpeed, playerRb, enemyRb, bulletPrefab);
+        bulletController = EnemyBulletController.Create(bulletStyle, bulletSpeed, playerRb, enemyRb, bulletPrefab, minBulletDeltaT, maxBulletDeltaT);
     }
 
     private void Update()

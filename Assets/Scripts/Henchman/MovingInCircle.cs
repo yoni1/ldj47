@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovingInCircle : MonoBehaviour
 {
     [SerializeField]
-    public float speed = 0.03f;
+    public float speed = 0.3f;
     // the radius of the player compared to the fishtank
     [SerializeField]
     public float radius;
