@@ -27,20 +27,6 @@ public class MovingInCircle : MonoBehaviour
     //meant for isometric calc
     private float squishFactor = 2f;
 
-    // remove me at the end
-    [SerializeField]
-    private bool bool_debug = false;
-    [SerializeField]
-    private float float_debug1 = 0f;
-    [SerializeField]
-    private float float_debug2 = 0f;
-    [SerializeField]
-    private Vector2 vector2_debug1;
-    [SerializeField]
-    private Vector2 vector2_debug2;
-    [SerializeField]
-    private Vector2 vector2_debug3;
-
     public Transform currentFirePoint;
     public Transform currentTetherPoint;
 
@@ -121,29 +107,6 @@ public class MovingInCircle : MonoBehaviour
         // correct for isometric 
         movement.y = fishtankPos.y + ((movement.y - fishtankPos.y) / squishFactor);
         return movement;
-    }
-
-    private void MoveLine()
-    {
-        ////line.transform.position = henchman.transform.position;
-        //line.transform.position = (henchman.transform.position - fishtank.transform.position) / 1.2f + fishtank.transform.position;
-        //pinkspot.transform.position = (henchman.transform.position - fishtank.transform.position) / float_debug1 + fishtank.transform.position;
-
-
-        //float pi = Mathf.PI;
-        //if (((angle < 2 * pi) && (angle > pi)) || ((angle > -pi) && (angle < 0)))
-        //{
-        //    henchman.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
-        //    line.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
-        //    fishtank.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
-        //}
-        //else
-        //{
-        //    henchman.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
-        //    line.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
-        //    fishtank.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
-        //}
-        //line.transform.eulerAngles = new Vector3(0, 0, angle * 180 / (Mathf.PI));
     }
 
     private bool GoClockwise(Vector2 currentPos, Vector2 endPos)
