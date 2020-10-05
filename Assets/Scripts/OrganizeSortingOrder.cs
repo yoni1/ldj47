@@ -6,6 +6,7 @@ namespace Assets.Scripts
     public class OrganizeSortingOrder : MonoBehaviour
     {
         private SpriteRenderer sp;
+        public int sortingLayerOffset = 0;
 
         // Use this for initialization
         void Start()
@@ -17,7 +18,7 @@ namespace Assets.Scripts
         void Update()
         {
             float bottom = sp.bounds.center.y + sp.bounds.extents.y;
-            sp.sortingOrder = -(int)(bottom * 100.0f);
+            sp.sortingOrder = -(int)(bottom * 100.0f) + sortingLayerOffset;
         }
     }
 }
