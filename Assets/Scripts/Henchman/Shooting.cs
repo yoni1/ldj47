@@ -4,13 +4,32 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-
     public GameObject fishPrefab;
+    private GameObject originalFishPrefab;
 
     public float fishForce = 13f;
 
+    private float remainingPowerupTime = 0f;
+
     private float remainingCooldown = 0f;
     public float shotCooldown = 0.25f;
+
+    void Start()
+    {
+        originalFishPrefab = fishPrefab;
+    }
+
+    public void SetTemporaryWeapon(GameObject newFishPrefab, float powerupTime)
+    {
+        fishPrefab = newFishPrefab;
+        remainingPowerupTime = powerupTime;
+    }
+
+    public void SetPermanentWeapon(GameObject newFishPrefab)
+    {
+        originalFishPrefab = newFishPrefab;
+        fishPrefab = newFishPrefab;
+    }
 
     // Update is called once per frame
     void Update()
@@ -30,6 +49,16 @@ public class Shooting : MonoBehaviour
             {
                 Shoot();
                 remainingCooldown = shotCooldown;
+            }
+        }
+
+        if (0.0f != remainingPowerupTime)
+        {
+            remainingPowerupTime -= Time.deltaTime;
+            if (0.0f >= remainingPowerupTime)
+            {
+                remainingPowerupTime = 0.0f;
+                fishPrefab = originalFishPrefab;
             }
         }
     }
