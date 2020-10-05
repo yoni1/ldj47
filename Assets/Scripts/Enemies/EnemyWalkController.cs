@@ -16,6 +16,7 @@ public abstract class EnemyWalkController
         ZigZagWideStartRight,
         JustDown,
         ToPlayer,
+        SpaceInvader,
     }
 
     public virtual void BeginWalk()
@@ -29,9 +30,15 @@ public abstract class EnemyWalkController
         enemyRb.velocity = new Vector2(0, 0);
     }
 
-    public virtual void OnCollide()
+    public virtual void OnCollide(Collider2D collision)
     {
     }
+
+    public virtual void OnStopCollide(Collider2D collision)
+    {
+    }
+
+    public virtual void OnVisible() { }
 
     public static EnemyWalkController Create(WalkingStyle walkingStyle, float enemyBaseSpeed, Rigidbody2D playerRb, Rigidbody2D enemyRb)
     {
@@ -53,6 +60,10 @@ public abstract class EnemyWalkController
 
             case WalkingStyle.ToPlayer:
                 obj = new EnemyWalkToPlayer();
+                break;
+
+            case WalkingStyle.SpaceInvader:
+                obj = new EnemyWalkSpaceInvader(1);
                 break;
 
             default:
