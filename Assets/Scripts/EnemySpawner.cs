@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
     public List<float> secondsBetweenSpawn;
     public GameObject bulletFab;
     public EnemyBulletController.BulletStyle bulletStyle;
-
+    public float bulletFrequncy;
     private new int i = 0;
 
     void SpawnEnemy()
