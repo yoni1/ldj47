@@ -77,7 +77,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: GAME OVER
+  m_Text: STAGE LOST
 --- !u!1 &3273889728544874789
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Dead Enemies: 0'
+  m_Text: 'Dead agents: 0'
 --- !u!114 &6110218920027750343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +247,7 @@ MonoBehaviour:
   masterHPText: {fileID: 6350802780097791278}
   enemiesDeadText: {fileID: 731655388885699851}
   alert: {fileID: 8905105569311665664, guid: 4894aa0ec9534014297aeed4f7e002dc, type: 3}
+  enemyPassedSound: {fileID: 4225799417412124125}
 --- !u!1 &6350802780097791272
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +325,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Mastermind HP: 0'
+  m_Text: 'Agents escaped: 0'
 --- !u!1 &6350802781837022178
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,6 +542,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6350802781837022182}
     m_Modifications:
+    - target: {fileID: 1769510107242231357, guid: 0036caaa0940149caa0d8facd64921ad,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 7072275597045393408, guid: 0036caaa0940149caa0d8facd64921ad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -623,6 +629,12 @@ GameObject:
 --- !u!4 &4615726793147147232 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7072275597045393408, guid: 0036caaa0940149caa0d8facd64921ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 2462235616692407264}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &4225799417412124125 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1769510107242231357, guid: 0036caaa0940149caa0d8facd64921ad,
     type: 3}
   m_PrefabInstance: {fileID: 2462235616692407264}
   m_PrefabAsset: {fileID: 0}

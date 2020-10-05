@@ -7,6 +7,10 @@ public class Shooting : MonoBehaviour
     public GameObject fishPrefab;
     private GameObject originalFishPrefab;
 
+    public AudioSource shootSound;
+    public AudioSource hitSoundSource;
+    public AudioSource powerUpSound;
+
     public float fishForce = 13f;
 
     private float remainingPowerupTime = 0f;
@@ -25,6 +29,8 @@ public class Shooting : MonoBehaviour
     {
         fishPrefab = newFishPrefab;
         remainingPowerupTime = powerupTime;
+
+        powerUpSound.Play();
     }
 
     public void SetPermanentWeapon(GameObject newFishPrefab)
@@ -74,6 +80,9 @@ public class Shooting : MonoBehaviour
         GameObject fish = Instantiate(fishPrefab, currentFirePoint.position, Quaternion.identity);
         FishProperties fishProperties = (FishProperties)fish.GetComponent(typeof(FishProperties));
 
+        FishCollider fishCollider = (FishCollider)fish.GetComponent(typeof(FishCollider));
+        fishCollider.audioSrc = hitSoundSource;
+
         SpriteRenderer renderer = (SpriteRenderer)fish.GetComponent(typeof(SpriteRenderer));
         // TODO: Don't use firePoint.rotation, calculate the angle from the mouse like in PlayerMovement.cs
         float angle = Quaternion.Angle(currentFirePoint.rotation, Quaternion.identity);
@@ -111,5 +120,7 @@ public class Shooting : MonoBehaviour
         Rigidbody2D rigidBody = fish.GetComponent<Rigidbody2D>();
         rigidBody.AddForce(currentFirePoint.right * fishForce, ForceMode2D.Impulse);
         Destroy(fish, 5.0f);
+
+        shootSound.Play();
     }
 }
