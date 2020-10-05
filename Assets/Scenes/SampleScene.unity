@@ -160,6 +160,12 @@ PrefabInstance:
       propertyPath: secondsBetweenSpawn.Array.data[1]
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 7432292708349983076, guid: f43a1611d7bc057489fd4c7a3342af5d,
+        type: 3}
+      propertyPath: objectPrefab
+      value: 
+      objectReference: {fileID: 8270477382729261990, guid: 7d08f2cd07c97074d9eaf9f482a06885,
+        type: 3}
     - target: {fileID: 7432292708349983077, guid: f43a1611d7bc057489fd4c7a3342af5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -501,6 +507,12 @@ PrefabInstance:
       propertyPath: secondsBetweenSpawn.Array.data[3]
       value: 19
       objectReference: {fileID: 0}
+    - target: {fileID: 7432292708349983076, guid: f43a1611d7bc057489fd4c7a3342af5d,
+        type: 3}
+      propertyPath: objectPrefab
+      value: 
+      objectReference: {fileID: 8270477382729261990, guid: 2839c70b886fe4544acdb594db8bbfdd,
+        type: 3}
     - target: {fileID: 7432292708349983077, guid: f43a1611d7bc057489fd4c7a3342af5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -631,6 +643,12 @@ PrefabInstance:
       propertyPath: secondsBetweenSpawn.Array.data[9]
       value: 35
       objectReference: {fileID: 0}
+    - target: {fileID: 7432292708349983076, guid: f43a1611d7bc057489fd4c7a3342af5d,
+        type: 3}
+      propertyPath: objectPrefab
+      value: 
+      objectReference: {fileID: 8270477382729261990, guid: 7d08f2cd07c97074d9eaf9f482a06885,
+        type: 3}
     - target: {fileID: 7432292708349983077, guid: f43a1611d7bc057489fd4c7a3342af5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4763,6 +4781,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3033159324101631210, guid: 583854cfb9f628349abc7cce66c99bc3,
         type: 3}
+    - target: {fileID: 7432292708349983076, guid: f43a1611d7bc057489fd4c7a3342af5d,
+        type: 3}
+      propertyPath: objectPrefab
+      value: 
+      objectReference: {fileID: 3033159324101631210, guid: 583854cfb9f628349abc7cce66c99bc3,
+        type: 3}
     - target: {fileID: 7432292708349983077, guid: f43a1611d7bc057489fd4c7a3342af5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4863,6 +4887,12 @@ PrefabInstance:
       propertyPath: secondsBetweenSpawn.Array.data[3]
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 7432292708349983076, guid: f43a1611d7bc057489fd4c7a3342af5d,
+        type: 3}
+      propertyPath: objectPrefab
+      value: 
+      objectReference: {fileID: 8270477382729261990, guid: 2839c70b886fe4544acdb594db8bbfdd,
+        type: 3}
     - target: {fileID: 7432292708349983077, guid: f43a1611d7bc057489fd4c7a3342af5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4948,10 +4978,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3033159324101631210, guid: 583854cfb9f628349abc7cce66c99bc3,
         type: 3}
+    - target: {fileID: 7432292708349983076, guid: f43a1611d7bc057489fd4c7a3342af5d,
+        type: 3}
+      propertyPath: objectPrefab
+      value: 
+      objectReference: {fileID: 3033159324101631210, guid: 583854cfb9f628349abc7cce66c99bc3,
+        type: 3}
     - target: {fileID: 7432292708349983077, guid: f43a1611d7bc057489fd4c7a3342af5d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7432292708349983077, guid: f43a1611d7bc057489fd4c7a3342af5d,
         type: 3}
@@ -5043,6 +5079,12 @@ PrefabInstance:
       propertyPath: secondsBetweenSpawn.Array.data[1]
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 7432292708349983076, guid: f43a1611d7bc057489fd4c7a3342af5d,
+        type: 3}
+      propertyPath: objectPrefab
+      value: 
+      objectReference: {fileID: 8270477382729261990, guid: 7d08f2cd07c97074d9eaf9f482a06885,
+        type: 3}
     - target: {fileID: 7432292708349983077, guid: f43a1611d7bc057489fd4c7a3342af5d,
         type: 3}
       propertyPath: m_LocalPosition.x
