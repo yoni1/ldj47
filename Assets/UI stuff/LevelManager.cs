@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
     public void killEnemy()
     {
         enemiesDeadCount++;
-        masterHPText.text = "Dead Enemies: " + enemiesDeadCount;
+        masterHPText.text = "Dead agents: " + enemiesDeadCount;
     }
 
     public void enemyGonePastYou(Collider2D collision)
@@ -36,7 +36,7 @@ public class LevelManager : MonoBehaviour
         Debug.Log("pos " + pos);
         _ = Instantiate(alert, pos, Quaternion.identity);
         
-        enemiesDeadText.text = "Mastermind HP: " + enemiesGonePastYouCount;
+        enemiesDeadText.text = "Agents escaped: " + enemiesGonePastYouCount;
         
 
     }
