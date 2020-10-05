@@ -7,13 +7,14 @@ public class TitleScreen : MonoBehaviour
 {
     public AudioClip startGameSound;
     private bool startingGame;
+    public float waitAfterSpace;
 
     public IEnumerator PlayGame()
     {
         AudioSource audio = GetComponent<AudioSource>();
         audio.Stop();
         audio.PlayOneShot(startGameSound);
-        yield return new WaitForSeconds(startGameSound.length);
+        yield return new WaitForSeconds(waitAfterSpace);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

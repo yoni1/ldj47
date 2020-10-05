@@ -496,7 +496,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b130a16e56e9744294d8c64642d43c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startGameSound: {fileID: 8300000, guid: eb0265ba49a8dea4cb951b188b514c8f, type: 3}
+  startGameSound: {fileID: 8300000, guid: 78200cac138ea4f4c830a57e7c9b9f93, type: 3}
+  waitAfterSpace: 1.5
 --- !u!222 &1825416187
 CanvasRenderer:
   m_ObjectHideFlags: 0
