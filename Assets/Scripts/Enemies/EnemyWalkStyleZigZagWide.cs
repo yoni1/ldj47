@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyWalkStyle1 : EnemyWalkController
+public class EnemyWalkStyleZigZagWide : EnemyWalkController
 {
     const float c_speedMultiplier = 3.0f;
     const float c_xMultiplier = c_speedMultiplier * 0.7071067811865476f;    // cos(30) = sqrt(2) / 2
@@ -11,7 +11,7 @@ public class EnemyWalkStyle1 : EnemyWalkController
     private int xDirection;
     const int c_yDirection = -1;
 
-    public EnemyWalkStyle1(int initialXDirection)
+    public EnemyWalkStyleZigZagWide(int initialXDirection)
     {
         xDirection = initialXDirection;
     }

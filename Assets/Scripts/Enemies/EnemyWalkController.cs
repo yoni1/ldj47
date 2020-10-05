@@ -12,17 +12,9 @@ public abstract class EnemyWalkController
 
     public enum WalkingStyle
     {
-        RandomWalkingStyle,
-        Style1GoLeft,
-        Style1GoRight,
-        Style2,
-        /*
-        Style3,
-        Style4,
-        Style5,
-        Style6,
-        Style7,
-        */
+        ZigZagWideStartLeft,
+        ZigZagWideStartRight,
+        JustDown,
     }
 
     public virtual void BeginWalk()
@@ -39,46 +31,20 @@ public abstract class EnemyWalkController
     {
         EnemyWalkController obj = null;
 
-        if (walkingStyle == WalkingStyle.RandomWalkingStyle)
-        {
-            Array styles = Enum.GetValues(typeof(WalkingStyle));
-            walkingStyle = (WalkingStyle)styles.GetValue(rnd.Next(1, styles.Length));
-        }
-
         switch (walkingStyle)
         {
-            case WalkingStyle.Style1GoLeft:
-                obj = new EnemyWalkStyle1(-1);
+            case WalkingStyle.ZigZagWideStartLeft:
+                obj = new EnemyWalkStyleZigZagWide(-1);
                 break;
 
-            case WalkingStyle.Style1GoRight:
-                obj = new EnemyWalkStyle1(1);
+            case WalkingStyle.ZigZagWideStartRight:
+                obj = new EnemyWalkStyleZigZagWide(1);
                 break;
 
-            case WalkingStyle.Style2:
-                obj = new EnemyWalkStyle2();
-                break;
-/*
-            case WalkingStyle.Style3:
-                obj = new EnemyWalkStyle3();
+            case WalkingStyle.JustDown:
+                obj = new EnemyWalkStyleJustDown();
                 break;
 
-            case WalkingStyle.Style4:
-                obj = new EnemyWalkStyle4();
-                break;
-
-            case WalkingStyle.Style5:
-                obj = new EnemyWalkStyle5();
-                break;
-
-            case WalkingStyle.Style6:
-                obj = new EnemyWalkStyle6();
-                break;
-
-            case WalkingStyle.Style7:
-                obj = new EnemyWalkStyle7();
-                break;
-*/
             default:
                 return null;
         }
