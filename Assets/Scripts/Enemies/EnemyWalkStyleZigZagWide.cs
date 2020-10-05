@@ -22,7 +22,7 @@ public class EnemyWalkStyleZigZagWide : EnemyWalkController
         enemyRb.velocity = newVelocity;
     }
 
-    public override void OnCollide()
+    public override void OnCollide(Collider2D collision)
     {
         xDirection *= -1;
     }

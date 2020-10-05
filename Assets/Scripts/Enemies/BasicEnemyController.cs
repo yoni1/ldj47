@@ -112,6 +112,7 @@ public class BasicEnemyController : MonoBehaviour
                 gameLevelManager.killEnemy();
                 Debug.Log("Dead");
                 Destroy(gameObject, 1.5f);
+                Debug.Log("Yaki kaki");
                 break;
         }
     }
@@ -120,14 +121,17 @@ public class BasicEnemyController : MonoBehaviour
     {
         return currentState;
     }
-    
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        walkController.OnCollide();
+
+    void OnTriggerEnter2D(Collider2D collision) {
+        walkController.OnCollide(collision);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D collision) {
+        walkController.OnStopCollide(collision);
+    }
+
+    private void OnBecameVisible()
     {
-        walkController.OnCollide();
+        walkController.OnVisible();
     }
 }
