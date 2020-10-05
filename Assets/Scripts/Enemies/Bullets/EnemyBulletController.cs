@@ -16,7 +16,7 @@ public abstract class EnemyBulletController : MonoBehaviour
     {
         NoBullet,
         DirectDown,
-        Back45Degrees,
+        At45DegreesToAquarium,
         // Mitbayet Bullet
         Bullseye,
         // More than one
@@ -24,6 +24,15 @@ public abstract class EnemyBulletController : MonoBehaviour
         Flamer,
         AtomBomb,
         BenStealer       
+    }
+
+    protected void MakeBullet(Vector3 fireDirection)
+    {
+        GameObject bullet = Instantiate(bulletPrefab, enemyRb.transform.position, Quaternion.identity);
+        Destroy(bullet, 5.0f);
+
+        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+        bulletRb.AddForce(fireDirection, ForceMode2D.Impulse);
     }
 
     public abstract void ShootBullet();
@@ -41,6 +50,9 @@ public abstract class EnemyBulletController : MonoBehaviour
                 break;
             case BulletStyle.DirectDown:
                 obj = new BulletDirectDown();
+                break;
+            case BulletStyle.At45DegreesToAquarium:
+                obj = new BulletAt45DegreesToAquarium();
                 break;
             default:
                 obj = new NoBullet();
