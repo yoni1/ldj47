@@ -58,7 +58,7 @@ public class BasicEnemyController : MonoBehaviour
     
     private void spawnBullet()
     {
-        if (bulletController == null)
+        if (bulletController == null || currentState == State.Dead)
         {
             return;
         }
