@@ -54,7 +54,7 @@ MonoBehaviour:
   bulletSpeed: 0
   walkingStyle: 2
   bulletStyle: 1
-  deadSprite: {fileID: 21300000, guid: 172c2fc2f558347c58b90cd4565b7fa3, type: 3}
+  deadSprite: {fileID: 21300000, guid: befceb625b55d40488ac41cc2c96fe4b, type: 3}
   minDeltaT: 2
   maxDeltaT: 2.5
 --- !u!70 &8718527831534107636
