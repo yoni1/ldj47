@@ -8,7 +8,7 @@ public class HenchmanCollisionHandler : MonoBehaviour
     public Sprite deadSprite;
 
     public float deadBeforeGameOverSec = 1.5f;
-    public float gameOverBeforeRestartSec = 3.0f;
+    public float gameOverBeforeRestartSec = 1.5f;//3.0f;
 
     private bool isDead = false;
     private float elapsedTime = -1f;
