@@ -27,6 +27,10 @@ public abstract class EnemyWalkController
     {
     }
 
+    public virtual void OnCollide()
+    {
+    }
+
     public static EnemyWalkController Create(WalkingStyle walkingStyle, float enemyBaseSpeed, Rigidbody2D playerRb, Rigidbody2D enemyRb)
     {
         EnemyWalkController obj = null;

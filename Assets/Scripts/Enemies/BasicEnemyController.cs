@@ -14,18 +14,9 @@ public class BasicEnemyController : MonoBehaviour
     private State currentState;
 
     private float elapsedTime = 0.0f;
-    private GameObject enemy, player;
+    private GameObject player;
     private Rigidbody2D enemyRb, playerRb;
     public GameObject bulletPrefab;
-
-    [SerializeField]
-    private Transform wallCheck;
-
-    [SerializeField]
-    private float wallCheckDistance;
-
-    [SerializeField]
-    private LayerMask whatIsWall;
 
     [SerializeField]
     private float enemyBaseSpeed;
@@ -41,9 +32,8 @@ public class BasicEnemyController : MonoBehaviour
 
     private void Start()
     {
-        enemy = transform.Find("JamesBond").gameObject;
         player = GameObject.Find("Henchman").gameObject;
-        enemyRb = enemy.GetComponent<Rigidbody2D>();
+        enemyRb = GetComponent<Rigidbody2D>();
         playerRb = player.GetComponent<Rigidbody2D>();
 
         walkController = EnemyWalkController.Create(walkingStyle, enemyBaseSpeed, playerRb, enemyRb);
@@ -106,5 +96,10 @@ public class BasicEnemyController : MonoBehaviour
                 walkController.BeginWalk();
                 break;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        walkController.OnCollide();
     }
 }

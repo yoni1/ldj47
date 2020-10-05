@@ -20,27 +20,10 @@ public class EnemyWalkStyleZigZagWide : EnemyWalkController
     {
         newVelocity.Set(c_xMultiplier * xDirection * enemyBaseSpeed, c_yMultiplier * c_yDirection * enemyBaseSpeed);
         enemyRb.velocity = newVelocity;
+    }
 
-        /* TODO: Flip on wall */
-
-        /*
-        int directionX;
-
-        // wallDetected = Physics2D.Raycast(wallCheck.position, transform.right, wallCheckDistance, whatIsWall);
-
-        if (enemyRb.position.x > enemyRb.position.x)
-        {
-            directionX = 1;
-        }
-        else
-        {
-            directionX = -1;
-        }
-
-        newVelocity.Set(playerRb.position.x * directionX * c_movementSpeed, playerRb.position.y * c_movementSpeed);
-        enemyRb.velocity = newVelocity;
-
-        //transform.position = Vector3.MoveTowards(transform.position, playerRb.position, movementSpeed * Time.deltaTime);
-        */
+    public override void OnCollide()
+    {
+        xDirection *= -1;
     }
 }
