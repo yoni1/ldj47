@@ -32,6 +32,8 @@ public class BasicEnemyController : MonoBehaviour
 
     public Sprite deadSprite;
 
+    private LevelManager gameLevelManager;
+
     private void Start()
     {
         player = GameObject.Find("Henchman").gameObject;
@@ -42,6 +44,8 @@ public class BasicEnemyController : MonoBehaviour
         walkController.BeginWalk();
 
         bulletController = EnemyBulletController.Create(bulletStyle, bulletSpeed, playerRb, enemyRb, bulletPrefab);
+
+        gameLevelManager = FindObjectOfType<LevelManager>();
     }
 
     private void Update()
@@ -102,6 +106,7 @@ public class BasicEnemyController : MonoBehaviour
                 //renderer.sortingOrder = 0;
                 renderer.sprite = deadSprite;
                 Destroy(gameObject, 1.5f);
+                gameLevelManager.killEnemy();
                 break;
         }
     }
