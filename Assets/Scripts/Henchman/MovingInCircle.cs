@@ -55,25 +55,25 @@ public class MovingInCircle : MonoBehaviour
         angle = Mathf.Atan(radiusVector.y / radiusVector.x);
 
         dirToFirePoint = new Dictionary<SpriteDirectionResolver.Direction, Transform> {
-                {SpriteDirectionResolver.Direction.E, this.gameObject.transform.Find("FirePointE")},
-                {SpriteDirectionResolver.Direction.NE, this.gameObject.transform.Find("FirePointNE")},
-                {SpriteDirectionResolver.Direction.N, this.gameObject.transform.Find("FirePointN")},
-                {SpriteDirectionResolver.Direction.NW, this.gameObject.transform.Find("FirePointNW")},
-                {SpriteDirectionResolver.Direction.W, this.gameObject.transform.Find("FirePointW")},
-                {SpriteDirectionResolver.Direction.SW, this.gameObject.transform.Find("FirePointSW")},
-                {SpriteDirectionResolver.Direction.S, this.gameObject.transform.Find("FirePointS")},
-                {SpriteDirectionResolver.Direction.SE, this.gameObject.transform.Find("FirePointSE")}
+                {SpriteDirectionResolver.Direction.E, this.gameObject.transform.Find("ActivePoints").Find("FirePointE")},
+                {SpriteDirectionResolver.Direction.NE, this.gameObject.transform.Find("ActivePoints").Find("FirePointNE")},
+                {SpriteDirectionResolver.Direction.N, this.gameObject.transform.Find("ActivePoints").Find("FirePointN")},
+                {SpriteDirectionResolver.Direction.NW, this.gameObject.transform.Find("ActivePoints").Find("FirePointNW")},
+                {SpriteDirectionResolver.Direction.W, this.gameObject.transform.Find("ActivePoints").Find("FirePointW")},
+                {SpriteDirectionResolver.Direction.SW, this.gameObject.transform.Find("ActivePoints").Find("FirePointSW")},
+                {SpriteDirectionResolver.Direction.S, this.gameObject.transform.Find("ActivePoints").Find("FirePointS")},
+                {SpriteDirectionResolver.Direction.SE, this.gameObject.transform.Find("ActivePoints").Find("FirePointSE")}
             };
 
         dirToTetherPoint = new Dictionary<SpriteDirectionResolver.Direction, Transform> {
-                {SpriteDirectionResolver.Direction.E, this.gameObject.transform.Find("TetherPointE")},
-                {SpriteDirectionResolver.Direction.NE, this.gameObject.transform.Find("TetherPointNE")},
-                {SpriteDirectionResolver.Direction.N, this.gameObject.transform.Find("TetherPointN")},
-                {SpriteDirectionResolver.Direction.NW, this.gameObject.transform.Find("TetherPointNW")},
-                {SpriteDirectionResolver.Direction.W, this.gameObject.transform.Find("TetherPointW")},
-                {SpriteDirectionResolver.Direction.SW, this.gameObject.transform.Find("TetherPointSW")},
-                {SpriteDirectionResolver.Direction.S, this.gameObject.transform.Find("TetherPointS")},
-                {SpriteDirectionResolver.Direction.SE, this.gameObject.transform.Find("TetherPointSE")}
+                {SpriteDirectionResolver.Direction.E, this.gameObject.transform.Find("ActivePoints").Find("TetherPointE")},
+                {SpriteDirectionResolver.Direction.NE, this.gameObject.transform.Find("ActivePoints").Find("TetherPointNE")},
+                {SpriteDirectionResolver.Direction.N, this.gameObject.transform.Find("ActivePoints").Find("TetherPointN")},
+                {SpriteDirectionResolver.Direction.NW, this.gameObject.transform.Find("ActivePoints").Find("TetherPointNW")},
+                {SpriteDirectionResolver.Direction.W, this.gameObject.transform.Find("ActivePoints").Find("TetherPointW")},
+                {SpriteDirectionResolver.Direction.SW, this.gameObject.transform.Find("ActivePoints").Find("TetherPointSW")},
+                {SpriteDirectionResolver.Direction.S, this.gameObject.transform.Find("ActivePoints").Find("TetherPointS")},
+                {SpriteDirectionResolver.Direction.SE, this.gameObject.transform.Find("ActivePoints").Find("TetherPointSE")}
             };
 
         currentFirePoint = dirToFirePoint[SpriteDirectionResolver.Direction.E];
