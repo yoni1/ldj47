@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BasicEnemyController : MonoBehaviour
 {
-    private enum State
+    public enum State
     {
         Walking,
         Knockback,
@@ -56,7 +56,7 @@ public class BasicEnemyController : MonoBehaviour
     
     private void spawnBullet()
     {
-        if (bulletController == null)
+        if (bulletController == null || currentState == State.Dead)
         {
             return;
         }
@@ -74,7 +74,7 @@ public class BasicEnemyController : MonoBehaviour
         }
     }
 
-    private void SetState(State newState)
+    public void SetState(State newState)
     {
         if (newState == currentState)
         {
@@ -95,7 +95,16 @@ public class BasicEnemyController : MonoBehaviour
             case State.Walking:
                 walkController.BeginWalk();
                 break;
+            case State.Dead:
+                GetComponent<SpriteRenderer>().sortingOrder = 0;
+                Destroy(gameObject, 2f);
+                break;
         }
+    }
+
+    public State GetState()
+    {
+        return currentState;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

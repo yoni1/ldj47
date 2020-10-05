@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 6912390756797396489}
   - component: {fileID: 9129341664496913591}
   - component: {fileID: -1361419391102446914}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eel
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
