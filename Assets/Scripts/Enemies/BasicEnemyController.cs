@@ -34,8 +34,8 @@ public class BasicEnemyController : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-    public float minBulletDeltaT;
-    public float maxBulletDeltaT;
+    public float minBulletDeltaT = 2.0f;
+    public float maxBulletDeltaT = 2.5f;
 
     private void Start()
     {

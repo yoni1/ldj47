@@ -29,7 +29,7 @@ public abstract class EnemyBulletController
     public abstract Vector3 CalcBulletFireDirection();
 
     public static EnemyBulletController Create(BulletStyle bulletStyle, float bulletSpeed, Rigidbody2D playerRb, Rigidbody2D enemyRb,
-        GameObject bulletPrefab)
+        GameObject bulletPrefab, float minBulletSec, float maxBulletSec)
     {
         EnemyBulletController obj = null;
 
@@ -49,7 +49,7 @@ public abstract class EnemyBulletController
         obj.bulletSpeed = bulletSpeed;
         obj.playerRb = playerRb;
         obj.enemyRb = enemyRb;
-        obj.bulletFrequency = Random.Range(c_minBulletSec, c_maxBulletSec);
+        obj.bulletFrequency = Random.Range(minBulletSec, maxBulletSec);
         obj.bulletPrefab = bulletPrefab;
         return obj;
     }
