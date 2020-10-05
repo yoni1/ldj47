@@ -6,8 +6,8 @@ public class BulletDirectDown : EnemyBulletController
 {
     const float bulletForce = 3f;
 
-    public override void ShootBullet()
+    public override Vector3 CalcBulletFireDirection()
     {
-        MakeBullet(new Vector3(0, -1, 0) * bulletForce);
+        return new Vector3(0, -1, 0) * bulletForce;
     }
 }

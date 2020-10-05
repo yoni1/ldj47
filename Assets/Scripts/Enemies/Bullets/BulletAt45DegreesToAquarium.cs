@@ -7,7 +7,7 @@ public class BulletAt45DegreesToAquarium : EnemyBulletController
     const float bulletForce = 3f;
     const float sqrtHalf = 0.7071067811865475f;
 
-    public override void ShootBullet()
+    public override Vector3 CalcBulletFireDirection()
     {
         int xDirection;
         // TODO: compare to aquarium, not to player!
@@ -20,6 +20,6 @@ public class BulletAt45DegreesToAquarium : EnemyBulletController
             xDirection = 1;
         }
 
-        MakeBullet(new Vector3(xDirection, -1, 0) * sqrtHalf * bulletForce);
+        return new Vector3(xDirection, -1, 0) * sqrtHalf * bulletForce;
     }
 }

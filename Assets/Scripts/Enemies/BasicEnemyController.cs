@@ -66,10 +66,20 @@ public class BasicEnemyController : MonoBehaviour
     
     private void spawnBullet()
     {
+        if (bulletController == null)
+        {
+            return;
+        }
+
         elapsedTime += Time.deltaTime;
         if (elapsedTime > bulletController.bulletFrequency)
         {
-            bulletController.ShootBullet();
+            GameObject bullet = Instantiate(bulletPrefab, enemyRb.transform.position, Quaternion.identity);
+            Destroy(bullet, 5.0f);
+
+            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+            bulletRb.AddForce(bulletController.CalcBulletFireDirection(), ForceMode2D.Impulse);
+
             elapsedTime -= bulletController.bulletFrequency;
         }
     }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class EnemyBulletController : MonoBehaviour
+public abstract class EnemyBulletController
 {
     protected float bulletSpeed;
     const float c_minBulletSec = 0.5f;
@@ -26,16 +26,7 @@ public abstract class EnemyBulletController : MonoBehaviour
         BenStealer       
     }
 
-    protected void MakeBullet(Vector3 fireDirection)
-    {
-        GameObject bullet = Instantiate(bulletPrefab, enemyRb.transform.position, Quaternion.identity);
-        Destroy(bullet, 5.0f);
-
-        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-        bulletRb.AddForce(fireDirection, ForceMode2D.Impulse);
-    }
-
-    public abstract void ShootBullet();
+    public abstract Vector3 CalcBulletFireDirection();
 
     public static EnemyBulletController Create(BulletStyle bulletStyle, float bulletSpeed, Rigidbody2D playerRb, Rigidbody2D enemyRb,
         GameObject bulletPrefab)
@@ -45,9 +36,6 @@ public abstract class EnemyBulletController : MonoBehaviour
        
         switch (bulletStyle)
         {
-            case BulletStyle.NoBullet:
-                obj = new NoBullet();
-                break;
             case BulletStyle.DirectDown:
                 obj = new BulletDirectDown();
                 break;
@@ -55,8 +43,7 @@ public abstract class EnemyBulletController : MonoBehaviour
                 obj = new BulletAt45DegreesToAquarium();
                 break;
             default:
-                obj = new NoBullet();
-                break;
+                return null;
         }
 
         obj.bulletSpeed = bulletSpeed;
