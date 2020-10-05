@@ -14,6 +14,8 @@ public class Shooting : MonoBehaviour
     private float remainingCooldown = 0f;
     public float shotCooldown = 0.25f;
 
+    public bool canShoot = true;
+
     void Start()
     {
         originalFishPrefab = fishPrefab;
@@ -34,6 +36,9 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canShoot)
+            return;
+        
         if (Input.GetButton("Fire1"))
         {
             if (0.0f != remainingCooldown)
