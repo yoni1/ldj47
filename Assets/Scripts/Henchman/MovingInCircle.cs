@@ -267,7 +267,7 @@ public class MovingInCircle : MonoBehaviour
             bool dragNow = MovePlayer(endPos);
             if (dragNow)
             {
-                Debug.Log("Start dragging here");
+                //Debug.Log("Start dragging here");
                 DragFishtank();
             }
 
