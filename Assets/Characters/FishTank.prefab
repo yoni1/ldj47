@@ -891,7 +891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d1f41718e5194e988af49ee7190a907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.08
+  speed: 0.03
   radius: 0
   dragging_speed: 0.004
   fishtank: {fileID: 8337769859758813184}
