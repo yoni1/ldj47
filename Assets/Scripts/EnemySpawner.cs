@@ -10,8 +10,6 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyObjectPrefab; 
 
     public List<float> secondsBetweenSpawn;
-    public GameObject bulletFab;
-    public EnemyBulletController.BulletStyle bulletStyle;
 
     private new int i = 0;
 
@@ -23,8 +21,6 @@ public class EnemySpawner : MonoBehaviour
         // TODO: Choose walking style
         BasicEnemyController newEnemyController = newEnemy.GetComponent<BasicEnemyController>();
         newEnemyController.walkingStyle = EnemyWalkController.WalkingStyle.ZigZagWideStartRight;
-        newEnemyController.bulletStyle = bulletStyle;
-        newEnemyController.bullet = bulletFab;
     }
 
     void Update()

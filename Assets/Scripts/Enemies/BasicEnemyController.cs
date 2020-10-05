@@ -14,10 +14,8 @@ public class BasicEnemyController : MonoBehaviour
     private State currentState;
 
     private float elapsedTime = 0.0f;
-    private GameObject enemy, player;
+    private GameObject enemy, player, bullet;
     private Rigidbody2D enemyRb, playerRb, bulletRb;
-
-    public GameObject bullet;
 
     [SerializeField]
     private Transform wallCheck;
