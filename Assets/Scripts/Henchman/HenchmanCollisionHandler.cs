@@ -22,6 +22,7 @@ public class HenchmanCollisionHandler : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log($"Entered trigger for layer: ${LayerMask.LayerToName(collision.gameObject.layer)}");
         switch (LayerMask.LayerToName(collision.gameObject.layer)) {
             case ("EnemyBullet"):
                 gameObject.GetComponent<MovingInCircle>().canMove = false;
