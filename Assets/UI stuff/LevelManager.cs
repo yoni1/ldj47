@@ -12,6 +12,8 @@ public class LevelManager : MonoBehaviour
     public Text enemiesDeadText;
     public GameObject alert;
 
+    public AudioSource enemyPassedSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +39,7 @@ public class LevelManager : MonoBehaviour
         _ = Instantiate(alert, pos, Quaternion.identity);
         
         enemiesDeadText.text = "Agents escaped: " + enemiesGonePastYouCount;
-        
 
+        enemyPassedSound.Play();
     }
 }
