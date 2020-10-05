@@ -10,9 +10,7 @@ public class OpeningCutscene : MonoBehaviour
     void Start()
     {
         VideoPlayer player = GetComponent<VideoPlayer>();
-        player.url = System.IO.Path.Combine(Application.streamingAssetsPath, "OpeningCutscene.mp4");
         player.loopPointReached += EndReached;
-        player.Play();
     }
 
     void NextScene()
