@@ -52,8 +52,8 @@ MonoBehaviour:
     type: 3}
   enemyBaseSpeed: 0.75
   bulletSpeed: 0
-  walkingStyle: 0
-  bulletStyle: 0
+  walkingStyle: 2
+  bulletStyle: 1
   deadSprite: {fileID: 21300000, guid: 172c2fc2f558347c58b90cd4565b7fa3, type: 3}
 --- !u!60 &1235464579
 PolygonCollider2D:
