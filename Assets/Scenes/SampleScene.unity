@@ -213,10 +213,11 @@ GameObject:
   - component: {fileID: 101794940}
   - component: {fileID: 101794941}
   - component: {fileID: 101794943}
+  - component: {fileID: 101794946}
   - component: {fileID: 101794942}
   - component: {fileID: 101794945}
   - component: {fileID: 101794944}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Henchman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +232,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 101794939}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.05, y: -1.416, z: 10}
+  m_LocalPosition: {x: -0.2, y: -1.416, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 1146063410}
@@ -338,7 +339,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!120 &101794944
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -469,6 +470,22 @@ MonoBehaviour:
   W: {fileID: 21300000, guid: d51590faa0ff742bab7543c1d3113787, type: 3}
   pinkSpotFactor: 1.92
   pipeTextureFactor: 0.004
+--- !u!70 &101794946
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101794939}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.3, y: 0.9}
+  m_Direction: 0
 --- !u!1 &106114856
 GameObject:
   m_ObjectHideFlags: 0
