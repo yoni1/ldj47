@@ -15,6 +15,7 @@ public abstract class EnemyWalkController
         ZigZagWideStartLeft,
         ZigZagWideStartRight,
         JustDown,
+        ToPlayer,
     }
 
     public virtual void BeginWalk()
@@ -48,6 +49,10 @@ public abstract class EnemyWalkController
 
             case WalkingStyle.JustDown:
                 obj = new EnemyWalkStyleJustDown();
+                break;
+
+            case WalkingStyle.ToPlayer:
+                obj = new EnemyWalkToPlayer();
                 break;
 
             default:
