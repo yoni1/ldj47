@@ -114,7 +114,8 @@ public class BasicEnemyController : MonoBehaviour
             case State.Dead:
                 SpriteRenderer renderer = GetComponent<SpriteRenderer>();
                 //renderer.sortingOrder = 0;
-                renderer.sprite = deadSprite;
+                //renderer.sprite = deadSprite;
+                animator.SetTrigger("die");
                 gameLevelManager.killEnemy();
                 Debug.Log("Dead");
                 Destroy(gameObject, 1.5f);
