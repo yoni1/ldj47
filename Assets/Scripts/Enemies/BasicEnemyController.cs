@@ -39,6 +39,8 @@ public class BasicEnemyController : MonoBehaviour
     public float minDeltaT = 2.0f;
     public float maxDeltaT = 2.5f;
 
+    public Animator animator;
+
     private void Start()
     {
         player = GameObject.Find("Henchman").gameObject;

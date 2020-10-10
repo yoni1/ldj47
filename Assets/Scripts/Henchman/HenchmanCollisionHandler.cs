@@ -18,6 +18,8 @@ public class HenchmanCollisionHandler : MonoBehaviour
     public AudioSource deathSound;
     public AudioSource lostStageSound;
 
+    public Animator animator;
+
     private void Start()
     {
         gameOverText = GameObject.Find("GameOverText").GetComponent<Text>();
@@ -28,11 +30,12 @@ public class HenchmanCollisionHandler : MonoBehaviour
         Debug.Log($"Entered trigger for layer: ${LayerMask.LayerToName(collision.gameObject.layer)}");
         switch (LayerMask.LayerToName(collision.gameObject.layer)) {
             case ("EnemyBullet"):
+            case ("Enemy"):
                 if (isDead)
                     break;
+                animator.SetTrigger("is_dead");
                 gameObject.GetComponent<MovingInCircle>().canMove = false;
                 gameObject.GetComponent<Shooting>().canShoot = false;
-                gameObject.GetComponent<SpriteRenderer>().sprite = deadSprite;
                 gameObject.GetComponent<MovingInCircle>().dragSound.Stop();
                 isDead = true;
                 deathSound.Play();
