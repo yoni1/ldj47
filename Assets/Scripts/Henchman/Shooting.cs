@@ -16,9 +16,11 @@ public class Shooting : MonoBehaviour
     private float remainingPowerupTime = 0f;
 
     private float remainingCooldown = 0f;
-    public float shotCooldown = 0.25f;
+    public float shotCooldown = 0.22f;
 
     public bool canShoot = true;
+
+    public Animator animator;
 
     void Start()
     {
@@ -47,6 +49,7 @@ public class Shooting : MonoBehaviour
         
         if (Input.GetButton("Fire1"))
         {
+            animator.SetBool("is_Shooting", true);
             if (0.0f != remainingCooldown)
             {
                 remainingCooldown -= Time.deltaTime;
@@ -61,6 +64,9 @@ public class Shooting : MonoBehaviour
                 Shoot();
                 remainingCooldown = shotCooldown;
             }
+        } else
+        {
+            animator.SetBool("is_Shooting", false);
         }
 
         if (0.0f != remainingPowerupTime)

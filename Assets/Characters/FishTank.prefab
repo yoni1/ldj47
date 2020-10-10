@@ -748,6 +748,7 @@ GameObject:
   - component: {fileID: 8337769859713632410}
   - component: {fileID: 1723208116703450442}
   - component: {fileID: 6175890658004166395}
+  - component: {fileID: 6277422168774811999}
   m_Layer: 12
   m_Name: Henchman
   m_TagString: Player
@@ -879,6 +880,7 @@ MonoBehaviour:
   fishForce: 13
   shotCooldown: 0.25
   canShoot: 1
+  animator: {fileID: 6277422168774811999}
 --- !u!114 &8337769859713632411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -908,6 +910,7 @@ MonoBehaviour:
   pipeTextureFactor: 0.004
   canMove: 1
   dragSound: {fileID: 8771998683522661167}
+  animator: {fileID: 6277422168774811999}
 --- !u!120 &8337769859713632410
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1035,6 +1038,26 @@ MonoBehaviour:
   gameOverBeforeRestartSec: 3
   deathSound: {fileID: 395425536534494409}
   lostStageSound: {fileID: 330992308640720440}
+  animator: {fileID: 6277422168774811999}
+--- !u!95 &6277422168774811999
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8337769859713632353}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 179c087bc4adb504799ae0ff22d168d5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8337769859758813184
 GameObject:
   m_ObjectHideFlags: 0

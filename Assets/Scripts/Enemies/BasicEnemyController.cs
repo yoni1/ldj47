@@ -39,6 +39,8 @@ public class BasicEnemyController : MonoBehaviour
     public float minDeltaT = 2.0f;
     public float maxDeltaT = 2.5f;
 
+    public Animator animator;
+
     private void Start()
     {
         player = GameObject.Find("Henchman").gameObject;
@@ -77,6 +79,7 @@ public class BasicEnemyController : MonoBehaviour
         elapsedTime += Time.deltaTime;
         if (elapsedTime > bulletController.bulletFrequency)
         {
+            animator.SetTrigger("shoot");
             GameObject bullet = Instantiate(bulletPrefab, enemyRb.transform.position, Quaternion.identity);
             Destroy(bullet, 5.0f);
 
@@ -111,7 +114,8 @@ public class BasicEnemyController : MonoBehaviour
             case State.Dead:
                 SpriteRenderer renderer = GetComponent<SpriteRenderer>();
                 //renderer.sortingOrder = 0;
-                renderer.sprite = deadSprite;
+                //renderer.sprite = deadSprite;
+                animator.SetTrigger("die");
                 gameLevelManager.killEnemy();
                 Debug.Log("Dead");
                 Destroy(gameObject, 1.5f);
