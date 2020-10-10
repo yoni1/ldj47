@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8226806794962345506}
   - component: {fileID: -687597822233831675}
   - component: {fileID: -5437667863452988006}
+  - component: {fileID: 7756878026871212394}
   m_Layer: 9
   m_Name: Sniper
   m_TagString: Enemy
@@ -55,6 +56,9 @@ MonoBehaviour:
   walkingStyle: 3
   bulletStyle: 3
   deadSprite: {fileID: 21300000, guid: 172c2fc2f558347c58b90cd4565b7fa3, type: 3}
+  minDeltaT: 2
+  maxDeltaT: 2.5
+  animator: {fileID: 7756878026871212394}
 --- !u!70 &8718527831534107636
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -168,3 +172,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortingLayerOffset: 0
+--- !u!95 &7756878026871212394
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8270477382729261990}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f1ea36a634424a9438faa6bae042aa2a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

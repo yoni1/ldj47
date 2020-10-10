@@ -79,6 +79,7 @@ public class BasicEnemyController : MonoBehaviour
         elapsedTime += Time.deltaTime;
         if (elapsedTime > bulletController.bulletFrequency)
         {
+            animator.SetTrigger("shoot");
             GameObject bullet = Instantiate(bulletPrefab, enemyRb.transform.position, Quaternion.identity);
             Destroy(bullet, 5.0f);
 
