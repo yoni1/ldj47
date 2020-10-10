@@ -49,6 +49,8 @@ public class MovingInCircle : MonoBehaviour
     private bool isDragging = false;
     public AudioSource dragSound;
 
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -144,35 +146,52 @@ public class MovingInCircle : MonoBehaviour
         switch (direction)
         {
             case SpriteDirectionResolver.Direction.W:
-                renderer.sprite = W;
+                //renderer.sprite = W;
+                animator.SetFloat("Horizontal", -1f);
+                animator.SetFloat("Vertical", 0f);
+
                 renderer.flipX = false;
                 break;
             case SpriteDirectionResolver.Direction.NW:
-                renderer.sprite = NW;
+                //renderer.sprite = NW;
+                animator.SetFloat("Horizontal", -1f);
+                animator.SetFloat("Vertical", 1f);
                 renderer.flipX = false;
                 break;
             case SpriteDirectionResolver.Direction.N:
-                renderer.sprite = N;
+                //renderer.sprite = N;
+                animator.SetFloat("Horizontal", 0f);
+                animator.SetFloat("Vertical", 1f);
                 renderer.flipX = false;
                 break;
             case SpriteDirectionResolver.Direction.NE:
-                renderer.sprite = NW;
+                //renderer.sprite = NW;
+                animator.SetFloat("Horizontal", -1f);
+                animator.SetFloat("Vertical", 1f);
                 renderer.flipX = true;
                 break;
             case SpriteDirectionResolver.Direction.E:
-                renderer.sprite = W;
+                //renderer.sprite = W;
+                animator.SetFloat("Horizontal", -1f);
+                animator.SetFloat("Vertical", 0f);
                 renderer.flipX = true;
                 break;
             case SpriteDirectionResolver.Direction.SE:
-                renderer.sprite = SW;
+                //renderer.sprite = SW;
+                animator.SetFloat("Horizontal", -1f);
+                animator.SetFloat("Vertical", -1f);
                 renderer.flipX = true;
                 break;
             case SpriteDirectionResolver.Direction.S:
-                renderer.sprite = S;
+                //renderer.sprite = S;
+                animator.SetFloat("Horizontal", 0f);
+                animator.SetFloat("Vertical", -1f);
                 renderer.flipX = false;
                 break;
             case SpriteDirectionResolver.Direction.SW:
-                renderer.sprite = SW;
+                //renderer.sprite = SW;
+                animator.SetFloat("Horizontal", -1f);
+                animator.SetFloat("Vertical", -1f);
                 renderer.flipX = false;
                 break;
         }
